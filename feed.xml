@@ -1,56 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-13T00:26:27-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">Post example</title><link href="https://yj-guo.github.io/2019/10/26/example-of-blog-post.html" rel="alternate" type="text/html" title="Post example" /><published>2019-10-26T06:00:40-04:00</published><updated>2019-10-26T06:00:40-04:00</updated><id>https://yj-guo.github.io/2019/10/26/example-of-blog-post</id><content type="html" xml:base="https://yj-guo.github.io/2019/10/26/example-of-blog-post.html">&lt;p&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/post-example/Banner.jpg&quot; alt=&quot;bay&quot; class=&quot;post-pic&quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-13T04:29:20-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">CloClé - The Summary</title><link href="https://yj-guo.github.io/2020/07/01/Clocle.html" rel="alternate" type="text/html" title="CloClé - The Summary" /><published>2020-07-01T11:00:00-04:00</published><updated>2020-07-01T11:00:00-04:00</updated><id>https://yj-guo.github.io/2020/07/01/Clocl%C3%A9</id><content type="html" xml:base="https://yj-guo.github.io/2020/07/01/Clocle.html">&lt;p&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/poster_f.jpg&quot; alt=&quot;The CloClé Poster&quot; class=&quot;post-pic&quot; /&gt;
 &lt;br /&gt;
+&lt;br /&gt;
+This is the final poster for our CloClé clothes caring machine.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/sides.jpg&quot; alt=&quot;A sider&quot; class=&quot;post-pic&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+During the pandemic period that might last longer than people could imagine, the demand for convenient and effective ways to sterilize clothes is growing, which is the inspiration for Cloclé. However, Cloclé is more than just simple clothes sanitizer. It is a cost-effective multifunction clothes caring machine that can disinfect, dry, iron, and incense garment, which is easily monitored and controlled via App on mobile phones. The name of product is combined with abbreviations of clothes, clean and clear to show the function that clothes will be clean and clear from dust and viruses after use. The function is further proved by the logo, which is ancient seal character of the word “Clothes”.
 &lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;This is an example of blog post.
-Picture by &lt;a href=&quot;https://unsplash.com/@bkotynski&quot;&gt;Bethany Legg&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h4&gt;
+&lt;h2 id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;#part-1&quot;&gt;Part 1&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#part-2&quot;&gt;Part 2&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#part-2-sub-part-1&quot;&gt;Part 2 Sub-part 1&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#part-2-sub-part-2&quot;&gt;Part 2 Sub-part 2&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#footnotes&quot;&gt;Footnotes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Key-Customer-Needs&quot;&gt;Key Customer Needs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Patentability-Assessment&quot;&gt;Patentability Assessment&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Design-for-Environment&quot;&gt;Design for Environment&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Next-Step-to-Pursue-the-Product-as-a-Business&quot;&gt;Next Step to Pursue the Product as a Business&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&quot;part-1&quot;&gt;PART 1&lt;/h4&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+&lt;h2 id=&quot;key-customer-needs&quot;&gt;Key Customer Needs&lt;/h2&gt;
+&lt;p&gt;At the beginning of 2020, rarely can people imagine how profoundly COVID-19, which seemed trivial at that time, would change everyone’s lives in the days that followed. Till now nearly 10 million people have been diagnosed and results in nearly half a million deaths. World Health Organization has emphasized the importance on frequent hand washing/sanitizing and clothes disinfecting. In current pandemic and predicted second wave in the coming autumn and winter, the need for energy-efficient, cost-effective and effective clothing disinfection methods cannot be ignored. Based on this need, we conducted a market survey and found that 85% of the respondents were very interested in this kind of product. People also put forward many worthy demands, such as multi-function, easy to move and easy to operate. These demands inspired us to design beyond a simple clothes sanitizer. We hope that Cloclé can promote the habit of drying clothes, especially in developing countries, so as to expand the market of clothes dryers and clothes care machines. The purpose of Cloclé is to lay a solid foundation for our subsequent products.
 &lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
+&lt;h2 id=&quot;patentability-assessment&quot;&gt;Patentability Assessment&lt;/h2&gt;
+&lt;p&gt;Cloclé is comprised of a leakproof side shell, a rigid clothes hanger, a central supporting column, a rigid base, a steam generator, a hot air generator, a water tank, few hot steam/air circulation systems, a rotating system, and corresponding signal transmission and control system. After hanging clothes, the side rails to fix leakproof side shell lock automatically. Then the machine starts the clothes caring program. Air circulation systems spray hot steam or hot air into the cavity and draw them back. The hot steam at about 60℃ realizes the function of disinfection and ironing. And the hot air realizes the function of drying. By adding essential oil into the water tank, the incense function is also realized. The circulation systems rotate at the speed of 10 rpm to ensure the uniformity of disinfection. The temperature, humidity, time and other data of the whole machine are transmitted to the mobile phone via Bluetooth and can be controlled through the mobile phone App by choosing different recipe for clothing care. When the internal pressure or the temperature is too high, the machine will alarm or even stop automatically. &lt;br /&gt;
+&lt;br /&gt; 
+&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/explode.jpg&quot; alt=&quot;The Exploded view of CloClé&quot; class=&quot;post-pic&quot; /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;part-2&quot;&gt;PART 2&lt;/h4&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
+&lt;p&gt;By searching relevant patents, we believe that Cloclé is different from existing patents and it is novel enough to get a patent. Specific claims include designs for multifunction, safety protection mechanism, energy conservation, better user experience, etc.&lt;/p&gt;
 
+&lt;h2 id=&quot;design-for-environment&quot;&gt;Design for Environment&lt;/h2&gt;
+&lt;p&gt;We attach great importance to the environmental performance of Cloclé so that sustainability assessment iterations are conducted during the whole design process. We chose various recycled materials such as PP, PEVA, and Aluminum to cut ecological damage. We also adopted modular design concept and tried to use a single type of material in the same module as far as possible. Besides, we flexibly design transportation modes according to distribution distance to reduce environmental impacts.
+&lt;br /&gt;
+&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/model.png&quot; alt=&quot;The CloClé Model&quot; class=&quot;post-pic&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;The prototype for CloClé.&lt;/center&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h5 id=&quot;part-2-sub-part-1&quot;&gt;PART 2 SUB PART 1&lt;/h5&gt;
-&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;part-2-sub-part-2&quot;&gt;PART 2 SUB PART 2&lt;/h5&gt;
-&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h5&gt;
-
-&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
-      &lt;p&gt;This is a note! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
+&lt;h2 id=&quot;next-step-to-pursue-the-product-as-a-business&quot;&gt;Next Step to Pursue the Product as a Business&lt;/h2&gt;
+&lt;p&gt;In order to cut costs, we will eliminate the retail process and sell products through the recently rapidly developing e-business, which also saves operating costs for cooperating with retailers, planning supply chain and so on. We plan to reduce production costs and margins, focusing on market development and demand cultivation rather than short-term profits. There are mainly two types of competitors in current market. The first type is the wardrobe clothes care machine which has comprehensive functions and great effects. But these machines are too expensive and take up large family space, not suitable for ordinary customers that Cloclé aimed at. The other type is the hanging steam sterilizer, which is cheap and simple. But these machines usually require manual operation and the function is limited. Therefore, we believe that Cloclé has a broad potential market. Current epidemic situation also greatly facilitates the product promotion. We plan to sell 2 million sets of products in the coming 10 years and earn an NPV of around 28.7 million dollars. According to the purpose of market development and demand cultivation, our focus will mainly be on advertising and propagating. We intend to use both traditional and new media to publicize the necessity of clothes disinfection and clothing care. At the same time, we will pay close attention to the feedback from users and correspondingly iterate the products to improve the user experience. When the market is mature, we will also release follow-up products to expand and refine the market of clothes disinfection and care and further profit from it.
+&lt;br /&gt; &lt;br /&gt;
+&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/sides.jpg&quot; alt=&quot;A sider&quot; class=&quot;post-pic&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">This is the final poster for our CloClé clothes caring machine.</summary></entry></feed>
