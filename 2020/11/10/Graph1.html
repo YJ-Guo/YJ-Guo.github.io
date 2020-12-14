@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Guo's Blog | Graph Theorem 1 - Introduction to Graphs</title>
+  <meta name="title" content="Guo's Blog | Graph Theorem 1 - Introduction to Graphs"/>
+  <meta name="description" content="The introduction to undirected graph and terminology."/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="Guo's Blog | Graph Theorem 1 - Introduction to Graphs"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://YJ-Guo.github.io/2020/11/10/Graph1"/>
+  <meta property="og:title" content="Guo's Blog | Graph Theorem 1 - Introduction to Graphs"/>
+  <meta property="og:description" content="The introduction to undirected graph and terminology."/>
+  <meta property="og:image" content="https://YJ-Guo.github.io"/>
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:url" content="https://YJ-Guo.github.io/2020/11/10/Graph1"/>
+  <meta property="twitter:title" content="Guo's Blog | Graph Theorem 1 - Introduction to Graphs"/>
+  <meta property="twitter:description" content="The introduction to undirected graph and terminology."/>
+  <meta property="twitter:image" content="https://YJ-Guo.github.io"/>
+  
+
+  <link rel="stylesheet" href="https://yj-guo.github.io/assets/css/main.css"/>
+  <link rel="canonical" href="https://YJ-Guo.github.io/2020/11/10/Graph1"/>
+  <link rel="shortcut icon" href="https://yj-guo.github.io/favicon.ico" type="image/x-icon"/>
+
+  <!-- Google Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', "", "auto");
+    ga('send', "pageview");
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+ <!-- Mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+        }
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="https://YJ-Guo.github.io/">
+      <img src="https://yj-guo.github.io/assets/img/title.png" alt="Guo's Blog" />
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon"></a>
+
+      <div class="menu">
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/">
+            Home
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/note">
+            Note
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/code">
+            Code
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/love">
+            Love
+          </a>
+        
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+          <header class="post-header">
+
+            
+
+            <h1 class="post-title">
+            
+              Graph Theorem 1 - Introduction to Graphs
+            
+            </h1>
+
+            
+            <p class="post-meta"><span class="post-date">November 10, 2020
+            </span></p>
+          </header>
+
+          <article class="post-content">
+            <center><img src="https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg" alt="A Graph" class="post-pic" /></center>
+<h2 class="no_toc" id="quick-guide">Quick Guide</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#graph-terminology-and-notation" id="markdown-toc-graph-terminology-and-notation">Graph Terminology and Notation</a></li>
+  <li><a href="#the-handshaking-lemma" id="markdown-toc-the-handshaking-lemma">The Handshaking Lemma</a></li>
+  <li><a href="#special-graphs" id="markdown-toc-special-graphs">Special Graphs</a></li>
+  <li><a href="#walks-and-paths" id="markdown-toc-walks-and-paths">Walks and Paths</a></li>
+  <li><a href="#connected-components" id="markdown-toc-connected-components">Connected Components</a></li>
+  <li><a href="#counting-connected-components" id="markdown-toc-counting-connected-components">Counting Connected Components</a></li>
+</ol>
+
+<h2 id="graph-terminology-and-notation">Graph Terminology and Notation</h2>
+<p>An <strong>undirected graph</strong> is a pair $G=(V,E)$ where $V$ is a finite <strong>non-empty</strong> set of <strong>vertices</strong> or <strong>nodes</strong> and $E\subseteq 2^V$ is a finite (possibly empty) set of <strong>edges</strong> consisting only of subset of cardinality 2 (two nodes form an edge).</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/exampleG.png" alt="An Example Graph" class="post-pic" /></center>
+<p>We use the notation $u\mathrm{-}v$ (equivalently, $v\mathrm{-}u$ in undirected graph) for both edges {$u,v$} and to say $u$ and $v$ are <strong>linked</strong> by an edge. <br />
+So that $G$ can be represented in two ways:</p>
+<center>$G = (\{1,2,3,4\}, \{\{1,2\}, \{1,3\}, \{2,3\}, \{2,4\}\})$</center>
+<p><br />
+or</p>
+<center>$$G = (\{1,2,3,4\}, \{1\mathrm{-}2, 1\mathrm{-}3, 2\mathrm{-}3, 2\mathrm{-}4\})$$</center>
+<p><br />
+We will say that the edge $u\mathrm{-}v$ is <strong>incident</strong> to either of its <strong>endpoints</strong> $u$ and $v$. <br />
+Two vertices such that $u\mathrm{-}v$ are called <strong>adjacent</strong>(or <strong>neighbors</strong>). <br />
+Note that we now only deal with <strong>simple graphs</strong> where there are no “loops” or “parallel edges”.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/invalidG.png" alt="unsimple graphs" class="post-pic" /></center>
+<p>The <strong>degree</strong> of a vertex, $deg(u)$, is the number of neighbors of $u$ (the number of vertices adjacent to $u$). <br />
+A vertex of degree 0 is called <strong>isolated</strong>.</p>
+
+<h2 id="the-handshaking-lemma">The Handshaking Lemma</h2>
+<p>The sum of the degrees of all nodes in a graph is <strong>twice</strong> the number of edges, that is</p>
+<center>$\sum_{v\in V} deg(v) = 2 |E|$</center>
+<p><strong>Proposition:</strong> In any graph there are an even number of vertices of odd degree.</p>
+
+<h2 id="special-graphs">Special Graphs</h2>
+<h4 class="no_toc" id="edgeless-graphs">Edgeless graphs</h4>
+<p>An <strong>edgeless</strong> graph $G = (V, E)$ has some vertices but <strong>no edges.</strong>
+Therefore, $E = \emptyset$ hence $|E| = 0$.</p>
+<h4 class="no_toc" id="complete-graphs">Complete graphs</h4>
+<p>A <strong>complete</strong> graph on $n\geq 1$ vertices, notation $K_n$, has edges between <strong>any two vertices</strong>. <br />
+Therefore, $K_n = (V,E)$ where $|V| = n$ and $|E| = \{\{u,v\}|u,v\in V\}.$</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/completeG.png" alt="Complete graphs" class="post-pic" /></center>
+<p>The number of edges in $k_n$ is the number of unordered pairs $\binom{n}{2} = \frac{n(n-1)}{2}$.</p>
+<h4 class="no_toc" id="path-graphs">Path graphs</h4>
+<p>A <strong>path</strong> graph on $n\geq 1$ vertices, notation $P_n$, has $n$ vertices and $n-1$ edges arranged “in a row”.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/pathG.png" alt="Path graphs" class="post-pic" /></center>
+<p>Note that for $n\geq3$ we have two vertices of degree 1 in $P_n$ and the rest have degree 2.</p>
+<h4 class="no_toc" id="cycle-graphs">Cycle graphs</h4>
+<p>A <strong>cycle</strong> graph on $n\geq 3$ vertices, notation $C_n$, has $n$ vertices and $n$ edges arranged “in a circle”.
+Note that in cycle graphs all vertices have degree 2.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/cycleG.png" alt="Cycle graphs" class="post-pic" /></center>
+<h4 class="no_toc" id="grid-graphs">Grid graphs</h4>
+<p>Let $m,n\geq 1$. An $m\times n$ <strong>grid</strong> graph has $m$ rows of $n$ vertices. Each vertex is linked by an edge to the vertices “closest” to it. <br />
+Here is an example of a $3\times5$ grid graph:</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/gridG.png" alt="Grid graphs" class="post-pic" /></center>
+<p>Note that an $m \times n$ grid graph has $mn$ vertices. When $m,n\geq3$, we have 4 corner vertices with degree 2, and the other vertices have degree 3 or 4.</p>
+<h2 id="walks-and-paths">Walks and Paths</h2>
+<h4 class="no_toc" id="walks">Walks</h4>
+<p>A <strong>walk</strong> is a non-empty sequence of vertices consecutively linked by edges: $u_0, u_1, \ldots, u_k$ such that $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_k$. This walk is <strong>form</strong> $u_0$ <strong>to</strong> $u_k$ (the <strong>endpoints</strong> of the walk) and $u_0$ and $u_k$ are <strong>connected</strong> by this walk. The <strong>length</strong> of this walk is the number $k$ of <strong>edges</strong>.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/exampleG.png" alt="An Example Graph" class="post-pic" /></center>
+<p>In this graph, $1\mathrm{-}2\mathrm{-}4$ is a walk of length 2.</p>
+<h4 class="no_toc" id="paths">Paths</h4>
+<p>A <strong>path</strong> is a walk in which all the vertices are <strong>distinct</strong>. <br />
+Walks of length 0 are paths. <br />
+Walks of length 1 are already paths because we cannot have loops in simple graph. <br />
+$u\mathrm{-}v\mathrm{-}u$ is a walk of length 2 but not a path. For example, $3\mathrm{-}2\mathrm{-}4$ in the graph above is a path of length 2.<br />
+<br />
+<strong>Proposition:</strong> If $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_{n-1}\mathrm{-} u_{n}$ is a <strong>walk</strong> of length $n\geq3$ such that $u_0\neq u_n$, then there exist vertices $v_1, \ldots,v_m$ such that $u_0\mathrm{-} v_1\mathrm{-} \ldots\mathrm{-} v_m\mathrm{-} u_{n}$ is a <strong>path</strong> of length at most $n$. (Where there is a walk, there is a path that is not longer.)
+<br />  <br />
+<strong>Stronger Proposition:</strong> If $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_{n-1}\mathrm{-} u_{n}$ is a <strong>walk</strong> of length $n\geq3$ such that $u_0\neq u_n$, then there exist vertices $v_1, \ldots,v_m$ such that $u_0\mathrm{-} v_1\mathrm{-} \ldots\mathrm{-} v_m\mathrm{-} u_{n}$ is a path <strong>whose sequence of nodes and edges is a subsequence of the sequence of nodes and edges</strong> of $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_{n-1}\mathrm{-} u_{n}$. <br />
+Here, “subsequence” preserves order, but it does not necessarily consist of consecutive elements.</p>
+
+<h2 id="connected-components">Connected Components</h2>
+<h4 class="no_toc" id="connectivity">Connectivity</h4>
+<p>Two vertices $u$ and $v$ of a graph $G=(V,E)$ are said to be <strong>connected</strong>, <strong>notation</strong> $u\mathrm{-}\ldots\mathrm{-}v$, if there exists some walk with <strong>endpoints</strong> $u$ and $v$. We call $\mathrm{-}\ldots\mathrm{-}$ the <strong>connectivity relation</strong>. <br />
+Connectivity is an <strong>equivalence relation</strong>, which means that connectivity is <strong>reflexive</strong>, <strong>symmetric</strong> and <strong>transitive</strong>.</p>
+<h4 class="no_toc" id="connected-components-1">Connected Components</h4>
+<p>A <strong>connected component</strong> of a graph $G = (V,E)$ is a set of vertices $C\subseteq V$ such that:</p>
+<ul>
+  <li>any two vertices in $C$ are <strong>connected</strong>, and</li>
+  <li>there is <strong>no strictly bigger</strong> set of vertices $C \subsetneq C’ \subseteq V$ such that any two vertices in $C’$ are connected.  <br />
+We say that $C$ is a <strong>maximally connected</strong> set of vertices of $G$.</li>
+</ul>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/ccG.png" alt="Example Connected Component graph" class="post-pic" /></center>
+<p>In this graph we have two connected components:$\{1,2,3,4\}$ and $\{5,6,7\}$.</p>
+<h4 class="no_toc" id="partition">Partition</h4>
+<p>Clearly, every vertex is in some connected components, at worst by itself.
+<strong>Proposition:</strong> Any two distinct connected components are <strong>disjoint</strong>. <br />
+The connected components form a <strong>partition</strong> of the vertices.</p>
+<h4 class="no_toc" id="connected-graphs">Connected graphs</h4>
+<p>A graph in which any two vertices are connected is called <strong>connected</strong>, other wise it is called <strong>disconnected</strong>. <br />
+A connected graph has exactly one connected component. A disconnected graph has tow or more connected components. <br />
+Complete graphs, $K_n$, path graphs, $P_n$, and cycle graphs, $C_n$, are all connected. <br />
+In edgeless graphs, each vertex forms a separate connected component. Thus, edgeless graphs with two or more vertices are disconnected, while 1-vertex graphs are connected. <br />
+The $m\times n$ grid graphs are connected.</p>
+
+<h2 id="counting-connected-components">Counting Connected Components</h2>
+<p>Consider a graph $G = (V,E)$ and denote by $CC$ the set of connected components of $G$. Shorthand: $cc$ for “connected component.” <br />
+<strong>Proposition:</strong> max($|V| - |E|$, 1) $\leq|C|\leq|V|$.   <br />
+<strong>Proposition:</strong> In any graph $G = (V,E)$ we have $|E|\geq|V|-|CC|$. <br />
+<strong>Proposition:</strong> $|E| \leq \binom{|V|}{2}$. <br />
+<strong>Corollary:</strong> Every connected graph with $n$ vertices has $n-1$ or more edges.</p>
+
+<p><br />
+<br /></p>
+
+<hr />
+<h4 class="no_toc" id="footnotes">FOOTNOTES</h4>
+<p>All the contents are based on the course materials provided by <a href="https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index">Dr. Clayton Greenberg</a>.</p>
+
+
+          </article>
+
+          
+
+      </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1 social-links">
+        <h4>CONTACT</h4>
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/email.png"
+            alt="email"
+          />
+          <a href="mailto:gyingjie@seas.upenn.edu" id="email-link">
+            
+              gyingjie[aT]seas.upenn.edu
+            
+          </a>
+          <br />
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/wechat.png"
+            alt="wechat"
+          />
+          <a href="#" id="wechat-link">
+            
+              gorser666
+            
+          </a>
+          <br />
+
+        
+      </div>
+
+      <div class="footer-col footer-col-2 social-links">
+        <h4>FOLLOW</h4>
+
+        
+          <span class="wrap-link">
+
+            
+            <img
+              src="https://yj-guo.github.io/assets/img/icons/github.png"
+              alt="github"
+            />
+            <a href="http://github.com/YJ-Guo">
+              
+                GitHub
+              
+            </a>
+          </span>
+
+           
+
+        
+      </div>
+
+      
+        <div class="footer-col footer-col-3 powered-by">
+          <p>
+            Go to <a href="/note"> Note</a> |
+            Go to <a href="/code"> Code</a> |
+            Go to <a href="/love"> Love</a>
+            <br>
+            powered by <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
+          </p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+  
+
+  
+    
+    
+
+
+  <div id="wechat-widget">
+    <p>
+      Find me on WeChat with the ID <strong>gorser666</strong>, or scan my QR code:
+    </p>
+
+    <img src="https://yj-guo.github.io/assets/img/wechat-qr-code.jpg" alt="QR code" id="qr-code" />
+  </div>
+
+
+
+
+    <script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/retina-1.3.0.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/cash-4.1.5.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/site.js"></script>
+
+  </body>
+</html>

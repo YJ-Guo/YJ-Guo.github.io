@@ -1,9 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-13T20:16:19-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">The Fundamental Theorem of Arithmetic</title><link href="https://yj-guo.github.io/2020/11/04/FTA.html" rel="alternate" type="text/html" title="The Fundamental Theorem of Arithmetic" /><published>2020-11-04T05:00:17-05:00</published><updated>2020-11-04T05:00:17-05:00</updated><id>https://yj-guo.github.io/2020/11/04/FTA</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/04/FTA.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-14T17:11:18-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">Graph Theorem 1 - Introduction to Graphs</title><link href="https://yj-guo.github.io/2020/11/10/Graph1.html" rel="alternate" type="text/html" title="Graph Theorem 1 - Introduction to Graphs" /><published>2020-11-10T17:17:30-05:00</published><updated>2020-11-10T17:17:30-05:00</updated><id>https://yj-guo.github.io/2020/11/10/Graph1</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/10/Graph1.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
 
-&lt;h2 id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;#The-Fundamental-Theorem-of-Arithmetic&quot;&gt;The Fundamental Theorem of Arithmetic&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Proof-example-by-contradiction-with-FTA&quot;&gt;Proof example by contradiction with FTA&lt;/a&gt;&lt;/li&gt;
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#graph-terminology-and-notation&quot; id=&quot;markdown-toc-graph-terminology-and-notation&quot;&gt;Graph Terminology and Notation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-handshaking-lemma&quot; id=&quot;markdown-toc-the-handshaking-lemma&quot;&gt;The Handshaking Lemma&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#special-graphs&quot; id=&quot;markdown-toc-special-graphs&quot;&gt;Special Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#walks-and-paths&quot; id=&quot;markdown-toc-walks-and-paths&quot;&gt;Walks and Paths&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#connected-components&quot; id=&quot;markdown-toc-connected-components&quot;&gt;Connected Components&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#counting-connected-components&quot; id=&quot;markdown-toc-counting-connected-components&quot;&gt;Counting Connected Components&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;graph-terminology-and-notation&quot;&gt;Graph Terminology and Notation&lt;/h2&gt;
+&lt;p&gt;An &lt;strong&gt;undirected graph&lt;/strong&gt; is a pair $G=(V,E)$ where $V$ is a finite &lt;strong&gt;non-empty&lt;/strong&gt; set of &lt;strong&gt;vertices&lt;/strong&gt; or &lt;strong&gt;nodes&lt;/strong&gt; and $E\subseteq 2^V$ is a finite (possibly empty) set of &lt;strong&gt;edges&lt;/strong&gt; consisting only of subset of cardinality 2 (two nodes form an edge).&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/exampleG.png&quot; alt=&quot;An Example Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;We use the notation $u\mathrm{-}v$ (equivalently, $v\mathrm{-}u$ in undirected graph) for both edges {$u,v$} and to say $u$ and $v$ are &lt;strong&gt;linked&lt;/strong&gt; by an edge. &lt;br /&gt;
+So that $G$ can be represented in two ways:&lt;/p&gt;
+&lt;center&gt;$G = (\{1,2,3,4\}, \{\{1,2\}, \{1,3\}, \{2,3\}, \{2,4\}\})$&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;
+or&lt;/p&gt;
+&lt;center&gt;$$G = (\{1,2,3,4\}, \{1\mathrm{-}2, 1\mathrm{-}3, 2\mathrm{-}3, 2\mathrm{-}4\})$$&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;
+We will say that the edge $u\mathrm{-}v$ is &lt;strong&gt;incident&lt;/strong&gt; to either of its &lt;strong&gt;endpoints&lt;/strong&gt; $u$ and $v$. &lt;br /&gt;
+Two vertices such that $u\mathrm{-}v$ are called &lt;strong&gt;adjacent&lt;/strong&gt;(or &lt;strong&gt;neighbors&lt;/strong&gt;). &lt;br /&gt;
+Note that we now only deal with &lt;strong&gt;simple graphs&lt;/strong&gt; where there are no “loops” or “parallel edges”.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/invalidG.png&quot; alt=&quot;unsimple graphs&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;The &lt;strong&gt;degree&lt;/strong&gt; of a vertex, $deg(u)$, is the number of neighbors of $u$ (the number of vertices adjacent to $u$). &lt;br /&gt;
+A vertex of degree 0 is called &lt;strong&gt;isolated&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-handshaking-lemma&quot;&gt;The Handshaking Lemma&lt;/h2&gt;
+&lt;p&gt;The sum of the degrees of all nodes in a graph is &lt;strong&gt;twice&lt;/strong&gt; the number of edges, that is&lt;/p&gt;
+&lt;center&gt;$\sum_{v\in V} deg(v) = 2 |E|$&lt;/center&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; In any graph there are an even number of vertices of odd degree.&lt;/p&gt;
+
+&lt;h2 id=&quot;special-graphs&quot;&gt;Special Graphs&lt;/h2&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;edgeless-graphs&quot;&gt;Edgeless graphs&lt;/h4&gt;
+&lt;p&gt;An &lt;strong&gt;edgeless&lt;/strong&gt; graph $G = (V, E)$ has some vertices but &lt;strong&gt;no edges.&lt;/strong&gt;
+Therefore, $E = \emptyset$ hence $|E| = 0$.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;complete-graphs&quot;&gt;Complete graphs&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;complete&lt;/strong&gt; graph on $n\geq 1$ vertices, notation $K_n$, has edges between &lt;strong&gt;any two vertices&lt;/strong&gt;. &lt;br /&gt;
+Therefore, $K_n = (V,E)$ where $|V| = n$ and $|E| = \{\{u,v\}|u,v\in V\}.$&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/completeG.png&quot; alt=&quot;Complete graphs&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;The number of edges in $k_n$ is the number of unordered pairs $\binom{n}{2} = \frac{n(n-1)}{2}$.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;path-graphs&quot;&gt;Path graphs&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;path&lt;/strong&gt; graph on $n\geq 1$ vertices, notation $P_n$, has $n$ vertices and $n-1$ edges arranged “in a row”.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/pathG.png&quot; alt=&quot;Path graphs&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;Note that for $n\geq3$ we have two vertices of degree 1 in $P_n$ and the rest have degree 2.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;cycle-graphs&quot;&gt;Cycle graphs&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;cycle&lt;/strong&gt; graph on $n\geq 3$ vertices, notation $C_n$, has $n$ vertices and $n$ edges arranged “in a circle”.
+Note that in cycle graphs all vertices have degree 2.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/cycleG.png&quot; alt=&quot;Cycle graphs&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;grid-graphs&quot;&gt;Grid graphs&lt;/h4&gt;
+&lt;p&gt;Let $m,n\geq 1$. An $m\times n$ &lt;strong&gt;grid&lt;/strong&gt; graph has $m$ rows of $n$ vertices. Each vertex is linked by an edge to the vertices “closest” to it. &lt;br /&gt;
+Here is an example of a $3\times5$ grid graph:&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/gridG.png&quot; alt=&quot;Grid graphs&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;Note that an $m \times n$ grid graph has $mn$ vertices. When $m,n\geq3$, we have 4 corner vertices with degree 2, and the other vertices have degree 3 or 4.&lt;/p&gt;
+&lt;h2 id=&quot;walks-and-paths&quot;&gt;Walks and Paths&lt;/h2&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;walks&quot;&gt;Walks&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;walk&lt;/strong&gt; is a non-empty sequence of vertices consecutively linked by edges: $u_0, u_1, \ldots, u_k$ such that $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_k$. This walk is &lt;strong&gt;form&lt;/strong&gt; $u_0$ &lt;strong&gt;to&lt;/strong&gt; $u_k$ (the &lt;strong&gt;endpoints&lt;/strong&gt; of the walk) and $u_0$ and $u_k$ are &lt;strong&gt;connected&lt;/strong&gt; by this walk. The &lt;strong&gt;length&lt;/strong&gt; of this walk is the number $k$ of &lt;strong&gt;edges&lt;/strong&gt;.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/exampleG.png&quot; alt=&quot;An Example Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;In this graph, $1\mathrm{-}2\mathrm{-}4$ is a walk of length 2.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;paths&quot;&gt;Paths&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;path&lt;/strong&gt; is a walk in which all the vertices are &lt;strong&gt;distinct&lt;/strong&gt;. &lt;br /&gt;
+Walks of length 0 are paths. &lt;br /&gt;
+Walks of length 1 are already paths because we cannot have loops in simple graph. &lt;br /&gt;
+$u\mathrm{-}v\mathrm{-}u$ is a walk of length 2 but not a path. For example, $3\mathrm{-}2\mathrm{-}4$ in the graph above is a path of length 2.&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; If $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_{n-1}\mathrm{-} u_{n}$ is a &lt;strong&gt;walk&lt;/strong&gt; of length $n\geq3$ such that $u_0\neq u_n$, then there exist vertices $v_1, \ldots,v_m$ such that $u_0\mathrm{-} v_1\mathrm{-} \ldots\mathrm{-} v_m\mathrm{-} u_{n}$ is a &lt;strong&gt;path&lt;/strong&gt; of length at most $n$. (Where there is a walk, there is a path that is not longer.)
+&lt;br /&gt;  &lt;br /&gt;
+&lt;strong&gt;Stronger Proposition:&lt;/strong&gt; If $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_{n-1}\mathrm{-} u_{n}$ is a &lt;strong&gt;walk&lt;/strong&gt; of length $n\geq3$ such that $u_0\neq u_n$, then there exist vertices $v_1, \ldots,v_m$ such that $u_0\mathrm{-} v_1\mathrm{-} \ldots\mathrm{-} v_m\mathrm{-} u_{n}$ is a path &lt;strong&gt;whose sequence of nodes and edges is a subsequence of the sequence of nodes and edges&lt;/strong&gt; of $u_0\mathrm{-} u_1\mathrm{-} \ldots\mathrm{-} u_{n-1}\mathrm{-} u_{n}$. &lt;br /&gt;
+Here, “subsequence” preserves order, but it does not necessarily consist of consecutive elements.&lt;/p&gt;
+
+&lt;h2 id=&quot;connected-components&quot;&gt;Connected Components&lt;/h2&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;connectivity&quot;&gt;Connectivity&lt;/h4&gt;
+&lt;p&gt;Two vertices $u$ and $v$ of a graph $G=(V,E)$ are said to be &lt;strong&gt;connected&lt;/strong&gt;, &lt;strong&gt;notation&lt;/strong&gt; $u\mathrm{-}\ldots\mathrm{-}v$, if there exists some walk with &lt;strong&gt;endpoints&lt;/strong&gt; $u$ and $v$. We call $\mathrm{-}\ldots\mathrm{-}$ the &lt;strong&gt;connectivity relation&lt;/strong&gt;. &lt;br /&gt;
+Connectivity is an &lt;strong&gt;equivalence relation&lt;/strong&gt;, which means that connectivity is &lt;strong&gt;reflexive&lt;/strong&gt;, &lt;strong&gt;symmetric&lt;/strong&gt; and &lt;strong&gt;transitive&lt;/strong&gt;.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;connected-components-1&quot;&gt;Connected Components&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;connected component&lt;/strong&gt; of a graph $G = (V,E)$ is a set of vertices $C\subseteq V$ such that:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;any two vertices in $C$ are &lt;strong&gt;connected&lt;/strong&gt;, and&lt;/li&gt;
+  &lt;li&gt;there is &lt;strong&gt;no strictly bigger&lt;/strong&gt; set of vertices $C \subsetneq C’ \subseteq V$ such that any two vertices in $C’$ are connected.  &lt;br /&gt;
+We say that $C$ is a &lt;strong&gt;maximally connected&lt;/strong&gt; set of vertices of $G$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/ccG.png&quot; alt=&quot;Example Connected Component graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;In this graph we have two connected components:$\{1,2,3,4\}$ and $\{5,6,7\}$.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;partition&quot;&gt;Partition&lt;/h4&gt;
+&lt;p&gt;Clearly, every vertex is in some connected components, at worst by itself.
+&lt;strong&gt;Proposition:&lt;/strong&gt; Any two distinct connected components are &lt;strong&gt;disjoint&lt;/strong&gt;. &lt;br /&gt;
+The connected components form a &lt;strong&gt;partition&lt;/strong&gt; of the vertices.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;connected-graphs&quot;&gt;Connected graphs&lt;/h4&gt;
+&lt;p&gt;A graph in which any two vertices are connected is called &lt;strong&gt;connected&lt;/strong&gt;, other wise it is called &lt;strong&gt;disconnected&lt;/strong&gt;. &lt;br /&gt;
+A connected graph has exactly one connected component. A disconnected graph has tow or more connected components. &lt;br /&gt;
+Complete graphs, $K_n$, path graphs, $P_n$, and cycle graphs, $C_n$, are all connected. &lt;br /&gt;
+In edgeless graphs, each vertex forms a separate connected component. Thus, edgeless graphs with two or more vertices are disconnected, while 1-vertex graphs are connected. &lt;br /&gt;
+The $m\times n$ grid graphs are connected.&lt;/p&gt;
+
+&lt;h2 id=&quot;counting-connected-components&quot;&gt;Counting Connected Components&lt;/h2&gt;
+&lt;p&gt;Consider a graph $G = (V,E)$ and denote by $CC$ the set of connected components of $G$. Shorthand: $cc$ for “connected component.” &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; max($|V| - |E|$, 1) $\leq|C|\leq|V|$.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; In any graph $G = (V,E)$ we have $|E|\geq|V|-|CC|$. &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; $|E| \leq \binom{|V|}{2}$. &lt;br /&gt;
+&lt;strong&gt;Corollary:&lt;/strong&gt; Every connected graph with $n$ vertices has $n-1$ or more edges.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Quick Guide</summary></entry><entry><title type="html">The Fundamental Theorem of Arithmetic</title><link href="https://yj-guo.github.io/2020/11/04/FTA.html" rel="alternate" type="text/html" title="The Fundamental Theorem of Arithmetic" /><published>2020-11-04T05:00:17-05:00</published><updated>2020-11-04T05:00:17-05:00</updated><id>https://yj-guo.github.io/2020/11/04/FTA</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/04/FTA.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+
+&lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-fundamental-theorem-of-arithmeticfta&quot; id=&quot;markdown-toc-the-fundamental-theorem-of-arithmeticfta&quot;&gt;The Fundamental Theorem of Arithmetic(FTA)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#proof-example-by-contradiction-with-fta&quot; id=&quot;markdown-toc-proof-example-by-contradiction-with-fta&quot;&gt;Proof example by contradiction with FTA&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;the-fundamental-theorem-of-arithmeticfta&quot;&gt;The Fundamental Theorem of Arithmetic(FTA)&lt;/h2&gt;
@@ -12,7 +121,7 @@
 &lt;p&gt;and any other expression of $n$ as a product of powers of primes is identical to this except, perhaps, for the order in which the factors are written.&lt;/p&gt;
 
 &lt;h2 id=&quot;proof-example-by-contradiction-with-fta&quot;&gt;Proof example by contradiction with FTA&lt;/h2&gt;
-&lt;h4 id=&quot;prove-that-sqrt22-is-irrational&quot;&gt;Prove that $\sqrt{22}$ is irrational.&lt;/h4&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;prove-that-sqrt22-is-irrational&quot;&gt;Prove that $\sqrt{22}$ is irrational.&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt; : &lt;strong&gt;Contradiction&lt;/strong&gt;. 
 &lt;br /&gt; 
 Assume that $\sqrt{22}$ is rational. Then $\sqrt{22}$ can be expressed as a fraction $\sqrt{22} = \frac{p}{q}$ with $p \in \mathbb{Z}$ and $q \in \mathbb{Z^+}$.
@@ -32,28 +141,29 @@ $Q.E.D$
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;h4 id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
 &lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Graph Theorem 0 - Proof Patterns</title><link href="https://yj-guo.github.io/2020/11/03/Graph0.html" rel="alternate" type="text/html" title="Graph Theorem 0 - Proof Patterns" /><published>2020-11-03T15:30:20-05:00</published><updated>2020-11-03T15:30:20-05:00</updated><id>https://yj-guo.github.io/2020/11/03/Graph0</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/03/Graph0.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
 &lt;p&gt;Graphs are often too large to interpret manually, so we use contrapositive proofs, contradiction proofs, and induction proofs to reason about arbitrary graphs. The Fibonacci numbers will also be covered as bonus.
 &lt;br /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;#Converse-and-Contrapositive&quot;&gt;Converse and Contrapositive&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Contradiction&quot;&gt;Contradiction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Ordinary-Induction&quot;&gt;Ordinary Induction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Strong-Induction&quot;&gt;Strong Induction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Recurrence&quot;&gt;Recurrence&lt;/a&gt;&lt;/li&gt;
+&lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#converse-and-contrapositive&quot; id=&quot;markdown-toc-converse-and-contrapositive&quot;&gt;Converse and Contrapositive&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#contradiction&quot; id=&quot;markdown-toc-contradiction&quot;&gt;Contradiction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ordinary-induction&quot; id=&quot;markdown-toc-ordinary-induction&quot;&gt;Ordinary Induction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#strong-induction&quot; id=&quot;markdown-toc-strong-induction&quot;&gt;Strong Induction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#recurrence&quot; id=&quot;markdown-toc-recurrence&quot;&gt;Recurrence&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;converse-and-contrapositive&quot;&gt;Converse and Contrapositive&lt;/h2&gt;
-&lt;h4 id=&quot;converse&quot;&gt;Converse&lt;/h4&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;converse&quot;&gt;Converse&lt;/h4&gt;
 &lt;p&gt;The &lt;strong&gt;converse&lt;/strong&gt; of “if $p$ the $q$” is “if $q$ then $p$”. &lt;br /&gt;
 In logic notation: the &lt;strong&gt;converse&lt;/strong&gt; of $p \Rightarrow q$ is $q \Rightarrow p$.
 &lt;br /&gt;
 Generally, the converse is not logically equivalent to the original implication.
 &lt;br /&gt;&lt;/p&gt;
-&lt;h4 id=&quot;contrapositive&quot;&gt;Contrapositive&lt;/h4&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;contrapositive&quot;&gt;Contrapositive&lt;/h4&gt;
 &lt;p&gt;The &lt;strong&gt;contrapositive&lt;/strong&gt; of “if $p$ the $q$” is “if (not $q$) then (not $p$)”. &lt;br /&gt;
 In logic notation: the &lt;strong&gt;contrapositive&lt;/strong&gt; of $p \Rightarrow q$ is $\neg q \Rightarrow \neg p$. &lt;br /&gt;
 Note that the &lt;strong&gt;contrapositive&lt;/strong&gt; is &lt;strong&gt;logically equivalent&lt;/strong&gt; to the original implication, which leads to a &lt;strong&gt;proof pattern&lt;/strong&gt; that instead of the implication, prove its contrapositive.&lt;/p&gt;
@@ -75,7 +185,7 @@ Note that any proof by contrapositive can be converted into a proof by contradic
 &lt;br /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;ordinary-induction&quot;&gt;Ordinary Induction&lt;/h2&gt;
 &lt;p&gt;Induction is a useful proof pattern for statements in the form: “for all nature numbers $n$ we have $P(n)$”, where $P(n)$ is a predicate whose truth depends on $n$. In logical notation: $\forall n \in \mathbb{N}\ P(n)$.&lt;/p&gt;
-&lt;h3 id=&quot;proof-pattern-of-ordinary-induction&quot;&gt;Proof Pattern of Ordinary Induction&lt;/h3&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;proof-pattern-of-ordinary-induction&quot;&gt;Proof Pattern of Ordinary Induction&lt;/h3&gt;
 &lt;p&gt;Let $P(n)$ be a predicate whose truth depends on $n$. &lt;br /&gt;
 &lt;strong&gt;Proof pattern:&lt;/strong&gt; &lt;br /&gt;
 &lt;strong&gt;(Base Case)&lt;/strong&gt; Check that $P(0)$ holds true. &lt;br /&gt;
@@ -121,10 +231,11 @@ $\sum_{i=0}^{n}i\cdot F_{2i} = (n+1)F_{2n+1}-F_{2n+2}$
 &lt;br /&gt;
 $\sum_{i=0}^{n}F_i^2\cdot F_{i+1}=\frac{1}{2}F_{n+2}F_{n+1}F_{n}$
 &lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;br /&gt;
+&lt;a href=&quot;/2020/11/10/Graph1&quot;&gt;Next: Graph Theorem 1 - Introduction to Graphs&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;h4 id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
 &lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Graphs are often too large to interpret manually, so we use contrapositive proofs, contradiction proofs, and induction proofs to reason about arbitrary graphs. The Fibonacci numbers will also be covered as bonus.</summary></entry><entry><title type="html">CloClé - The Summary</title><link href="https://yj-guo.github.io/2020/07/01/Clocle.html" rel="alternate" type="text/html" title="CloClé - The Summary" /><published>2020-07-01T11:00:00-04:00</published><updated>2020-07-01T11:00:00-04:00</updated><id>https://yj-guo.github.io/2020/07/01/Clocl%C3%A9</id><content type="html" xml:base="https://yj-guo.github.io/2020/07/01/Clocle.html">&lt;p&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/poster_f.jpg&quot; alt=&quot;The CloClé Poster&quot; class=&quot;post-pic&quot; /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
@@ -136,12 +247,13 @@ This is the final poster for our CloClé clothes caring machine.&lt;/p&gt;
 During the pandemic period that might last longer than people could imagine, the demand for convenient and effective ways to sterilize clothes is growing, which is the inspiration for Cloclé. However, Cloclé is more than just simple clothes sanitizer. It is a cost-effective multifunction clothes caring machine that can disinfect, dry, iron, and incense garment, which is easily monitored and controlled via App on mobile phones. The name of product is combined with abbreviations of clothes, clean and clear to show the function that clothes will be clean and clear from dust and viruses after use. The function is further proved by the logo, which is ancient seal character of the word “Clothes”.
 &lt;br /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;#Key-Customer-Needs&quot;&gt;Key Customer Needs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Patentability-Assessment&quot;&gt;Patentability Assessment&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Design-for-Environment&quot;&gt;Design for Environment&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Next-Step-to-Pursue-the-Product-as-a-Business&quot;&gt;Next Step to Pursue the Product as a Business&lt;/a&gt;&lt;/li&gt;
+&lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#key-customer-needs&quot; id=&quot;markdown-toc-key-customer-needs&quot;&gt;Key Customer Needs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#patentability-assessment&quot; id=&quot;markdown-toc-patentability-assessment&quot;&gt;Patentability Assessment&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#design-for-environment&quot; id=&quot;markdown-toc-design-for-environment&quot;&gt;Design for Environment&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#next-step-to-pursue-the-product-as-a-business&quot; id=&quot;markdown-toc-next-step-to-pursue-the-product-as-a-business&quot;&gt;Next Step to Pursue the Product as a Business&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;key-customer-needs&quot;&gt;Key Customer Needs&lt;/h2&gt;
