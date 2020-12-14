@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Guo's Blog | Graph Theorem 0 - Proof Patterns</title>
+  <meta name="title" content="Guo's Blog | Graph Theorem 0 - Proof Patterns"/>
+  <meta name="description" content="The basic proof methods used in graph theory."/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="Guo's Blog | Graph Theorem 0 - Proof Patterns"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://YJ-Guo.github.io/2020/11/03/Graph0"/>
+  <meta property="og:title" content="Guo's Blog | Graph Theorem 0 - Proof Patterns"/>
+  <meta property="og:description" content="The basic proof methods used in graph theory."/>
+  <meta property="og:image" content="https://YJ-Guo.github.io"/>
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:url" content="https://YJ-Guo.github.io/2020/11/03/Graph0"/>
+  <meta property="twitter:title" content="Guo's Blog | Graph Theorem 0 - Proof Patterns"/>
+  <meta property="twitter:description" content="The basic proof methods used in graph theory."/>
+  <meta property="twitter:image" content="https://YJ-Guo.github.io"/>
+  
+
+  <link rel="stylesheet" href="https://yj-guo.github.io/assets/css/main.css"/>
+  <link rel="canonical" href="https://YJ-Guo.github.io/2020/11/03/Graph0"/>
+  <link rel="shortcut icon" href="https://yj-guo.github.io/favicon.ico" type="image/x-icon"/>
+
+  <!-- Google Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', "", "auto");
+    ga('send', "pageview");
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+ <!-- Mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']]
+        }
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="https://YJ-Guo.github.io/">
+      <img src="https://yj-guo.github.io/assets/img/title.png" alt="Guo's Blog" />
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon"></a>
+
+      <div class="menu">
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/">
+            Home
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/note">
+            Note
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/code">
+            Code
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/love">
+            Love
+          </a>
+        
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+          <header class="post-header">
+
+            
+
+            <h1 class="post-title">
+            
+              Graph Theorem 0 - Proof Patterns
+            
+            </h1>
+
+            
+            <p class="post-meta"><span class="post-date">November 3, 2020
+            </span></p>
+          </header>
+
+          <article class="post-content">
+            <center><img src="https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg" alt="A Graph" class="post-pic" /></center>
+<p>Graphs are often too large to interpret manually, so we use contrapositive proofs, contradiction proofs, and induction proofs to reason about arbitrary graphs. The Fibonacci numbers will also be covered as bonus.
+<br /></p>
+
+<h2 id="quick-guide">Quick Guide</h2>
+<ol>
+  <li><a href="#Converse-and-Contrapositive">Converse and Contrapositive</a></li>
+  <li><a href="#Contradiction">Contradiction</a></li>
+  <li><a href="#Ordinary-Induction">Ordinary Induction</a></li>
+  <li><a href="#Strong-Induction">Strong Induction</a></li>
+  <li><a href="#Recurrence">Recurrence</a></li>
+</ol>
+
+<h2 id="converse-and-contrapositive">Converse and Contrapositive</h2>
+<h4 id="converse">Converse</h4>
+<p>The <strong>converse</strong> of “if $p$ the $q$” is “if $q$ then $p$”. <br />
+In logic notation: the <strong>converse</strong> of $p \Rightarrow q$ is $q \Rightarrow p$.
+<br />
+Generally, the converse is not logically equivalent to the original implication.
+<br /></p>
+<h4 id="contrapositive">Contrapositive</h4>
+<p>The <strong>contrapositive</strong> of “if $p$ the $q$” is “if (not $q$) then (not $p$)”. <br />
+In logic notation: the <strong>contrapositive</strong> of $p \Rightarrow q$ is $\neg q \Rightarrow \neg p$. <br />
+Note that the <strong>contrapositive</strong> is <strong>logically equivalent</strong> to the original implication, which leads to a <strong>proof pattern</strong> that instead of the implication, prove its contrapositive.</p>
+
+<p>Tips: the contrapositive doesn’t change the <strong>quantifiers</strong> like $\forall$ and $\exists$. 
+For example, the contrapositive for
+<br /></p>
+<center>"for any integers $x,y$, if $xy$ is even then $x$ is even or $y$ is even" </center>
+<p><br />
+is
+<br /></p>
+<center>"for any integers $x,y$, if $x$ is odd and $y$ is odd then $xy$ is odd".</center>
+<p><br /></p>
+<h2 id="contradiction">Contradiction</h2>
+<p>A statement of the form “$P$ and (not $P$)” is called a <strong>contradiction</strong>. It is always <strong>false</strong>. <br />
+Here a new <strong>proof pattern</strong> is introduced that to prove “$P$” we can instead prove “if (not $P$) then $C$”, where $C$ stands for a statement that is a contradiction. This proof pattern can be justified by the logical equivalence that $p \equiv \neg p \Rightarrow F$. <br />
+Also, if we want to prove “if $P$ then $Q$” we can instead prove “if $P$ and (not $Q$) then $C$”, which is another <strong>proof pattern</strong>. This proof pattern is justified by the logical equivalence that $p \Rightarrow q \equiv p \wedge \neg q \Rightarrow F$. A proof example is given in note <a href="/2020/11/04/FTA">The Fundamental Theorem of Arithmetic</a> <br />
+Note that any proof by contrapositive can be converted into a proof by contradiction.
+<br /></p>
+<h2 id="ordinary-induction">Ordinary Induction</h2>
+<p>Induction is a useful proof pattern for statements in the form: “for all nature numbers $n$ we have $P(n)$”, where $P(n)$ is a predicate whose truth depends on $n$. In logical notation: $\forall n \in \mathbb{N}\ P(n)$.</p>
+<h3 id="proof-pattern-of-ordinary-induction">Proof Pattern of Ordinary Induction</h3>
+<p>Let $P(n)$ be a predicate whose truth depends on $n$. <br />
+<strong>Proof pattern:</strong> <br />
+<strong>(Base Case)</strong> Check that $P(0)$ holds true. <br />
+<strong>(Induction Step)</strong> Let $k$ be an arbitrary natural number. Assume $\textbf{P(k)}.$ Using that derive $P(k+1)$. <br />
+Conclude $\forall n \in \mathbb{N} \ P(n)$. <br />
+<br />
+The $P(k)$ inside the box in the induction step is called the <strong>Induction Hypothesis(IH)</strong>. The IH must be stated inside the induction step because it refers to $k$. <br />
+In logical notation the induction step is $\forall k \in \mathbb{N}\ \ P(k) \Rightarrow P(k+1)$.  <br />
+<br />
+There is also a <strong>variant</strong> proof pattern for ordinary induction:    <br />
+Let $n_0$ be a natural number and let $P(n)$ be a predicate that is well defined for all natural numbers $n\geq n_0$.
+<br />
+<strong>Proof pattern:</strong> <br />
+<strong>(Base Case)</strong> Check that $P(n_0)$ holds true. <br />
+<strong>(Induction Step)</strong> Let $k\geq n_0$ be an arbitrary natural number. Assume $\textbf{P(k)}.$ Using that derive $P(k+1)$. <br />
+Conclude $\forall n \geq n_0 \ P(n)$. <br />
+Induction is a powerful proof method in graph theorem. By doing induction on vertices or edges, problems can be solved.</p>
+<h2 id="strong-induction">Strong Induction</h2>
+<p>Let $n_0$ be a natural number and let $P(n)$ be a predicate that is well defined for all natural numbers $n\geq n_0$.  <br />
+<strong>Proof pattern:</strong> <br />
+<strong>(Base Case)</strong> Drive/infer $P(n_0)$. <br />
+<strong>(Induction Step)</strong> Let $k \in \mathbb{N}$ such that $k \geq n_0$. Assume $P(n_0)$ and $\ldots$ and $P(k)$. Using that derive $P(k+1)$. <br />
+Conclude $\forall n \geq n_0 \ P(n)$.   <br />
+The IH $P(n_0)$ and $\ldots$ and $P(k)$ is stronger than $P(k)$. But strong induction is <strong>mathematically equivalent</strong> to the ordinary induction.</p>
+
+<h2 id="recurrence">Recurrence</h2>
+<p>The Fibonacci recurrence is given by</p>
+<ul>
+  <li>$F_0 = 0$</li>
+  <li>$F_1 = 1$</li>
+  <li>$F_n = F_{n-1} + F_{n-2} \  (n\geq 2)$</li>
+</ul>
+
+<p>The Fibonacci recurrence can be solve with $F_n = \frac{(\psi ^n -\  \phi ^n)}{\sqrt{5}}$, where $\psi &gt; \phi$ are the two roots of the equation $x^2 - x - 1 = 0$.  <br />
+$\psi = \frac{(1+ \sqrt{5})}{2}$ is known as the <strong>Golden Ratio</strong> and $\phi = \frac{(1- \sqrt{5})}{2}$. <br />
+<br />
+<strong>Some useful equations based on Fibonacci numbers</strong> <br />
+$F_{n-1} \cdot F_{n+1} - F_{n}^2 = (-1)^n$
+<br />
+<br />
+$\sum_{i=0}^{n}i\cdot F_{2i} = (n+1)F_{2n+1}-F_{2n+2}$
+<br />
+<br />
+$\sum_{i=0}^{n}F_i^2\cdot F_{i+1}=\frac{1}{2}F_{n+2}F_{n+1}F_{n}$
+<br />
+<br /></p>
+
+<hr />
+<h4 id="footnotes">FOOTNOTES</h4>
+<p>All the contents are based on the course materials provided by <a href="https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index">Dr. Clayton Greenberg</a>.</p>
+
+
+          </article>
+
+          
+
+      </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1 social-links">
+        <h4>CONTACT</h4>
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/email.png"
+            alt="email"
+          />
+          <a href="mailto:gyingjie@seas.upenn.edu" id="email-link">
+            
+              gyingjie[aT]seas.upenn.edu
+            
+          </a>
+          <br />
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/wechat.png"
+            alt="wechat"
+          />
+          <a href="#" id="wechat-link">
+            
+              gorser666
+            
+          </a>
+          <br />
+
+        
+      </div>
+
+      <div class="footer-col footer-col-2 social-links">
+        <h4>FOLLOW</h4>
+
+        
+          <span class="wrap-link">
+
+            
+            <img
+              src="https://yj-guo.github.io/assets/img/icons/github.png"
+              alt="github"
+            />
+            <a href="http://github.com/YJ-Guo">
+              
+                GitHub
+              
+            </a>
+          </span>
+
+           
+
+        
+      </div>
+
+      
+        <div class="footer-col footer-col-3 powered-by">
+          <p>
+            powered by <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
+          </p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+  
+
+  
+    
+    
+
+
+  <div id="wechat-widget">
+    <p>
+      Find me on WeChat with the ID <strong>gorser666</strong>, or scan my QR code:
+    </p>
+
+    <img src="https://yj-guo.github.io/assets/img/wechat-qr-code.jpg" alt="QR code" id="qr-code" />
+  </div>
+
+
+
+
+    <script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/retina-1.3.0.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/cash-4.1.5.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/site.js"></script>
+
+  </body>
+</html>

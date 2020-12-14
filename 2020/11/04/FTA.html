@@ -26,28 +26,28 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>Guo's Blog | Note</title>
-  <meta name="title" content="Guo's Blog | Note"/>
-  <meta name="description" content="This is Guo's record for his notes and codes."/>
+  <title>Guo's Blog | The Fundamental Theorem of Arithmetic</title>
+  <meta name="title" content="Guo's Blog | The Fundamental Theorem of Arithmetic"/>
+  <meta name="description" content="The Fundamental Theorem of Arithmetic and a proof example."/>
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:site_name" content="Guo's Blog | Note"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://YJ-Guo.github.io/note"/>
-  <meta property="og:title" content="Guo's Blog | Note"/>
-  <meta property="og:description" content="This is Guo's record for his notes and codes."/>
-  <meta property="og:image" content="https://YJ-Guo.github.io/assets/img/profile-pic.jpg"/>
+  <meta property="og:site_name" content="Guo's Blog | The Fundamental Theorem of Arithmetic"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://YJ-Guo.github.io/2020/11/04/FTA"/>
+  <meta property="og:title" content="Guo's Blog | The Fundamental Theorem of Arithmetic"/>
+  <meta property="og:description" content="The Fundamental Theorem of Arithmetic and a proof example."/>
+  <meta property="og:image" content="https://YJ-Guo.github.io"/>
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:url" content="https://YJ-Guo.github.io/note"/>
-  <meta property="twitter:title" content="Guo's Blog | Note"/>
-  <meta property="twitter:description" content="This is Guo's record for his notes and codes."/>
-  <meta property="twitter:image" content="https://YJ-Guo.github.io/assets/img/profile-pic.jpg"/>
+  <meta property="twitter:url" content="https://YJ-Guo.github.io/2020/11/04/FTA"/>
+  <meta property="twitter:title" content="Guo's Blog | The Fundamental Theorem of Arithmetic"/>
+  <meta property="twitter:description" content="The Fundamental Theorem of Arithmetic and a proof example."/>
+  <meta property="twitter:image" content="https://YJ-Guo.github.io"/>
   
 
   <link rel="stylesheet" href="https://yj-guo.github.io/assets/css/main.css"/>
-  <link rel="canonical" href="https://YJ-Guo.github.io/note"/>
+  <link rel="canonical" href="https://YJ-Guo.github.io/2020/11/04/FTA"/>
   <link rel="shortcut icon" href="https://yj-guo.github.io/favicon.ico" type="image/x-icon"/>
 
   <!-- Google Analytics -->
@@ -116,49 +116,67 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="note">
-          <h1 class="page-heading">Note</h1>
-          <p>This is a collection of my notes for classes and projects.
+        <div class="post">
+
+          <header class="post-header">
+
+            
+
+            <h1 class="post-title">
+            
+              The Fundamental Theorem of Arithmetic
+            
+            </h1>
+
+            
+            <p class="post-meta"><span class="post-date">November 4, 2020
+            </span></p>
+          </header>
+
+          <article class="post-content">
+            <center><img src="https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg" alt="A Graph" class="post-pic" /></center>
+
+<h2 id="quick-guide">Quick Guide</h2>
+<ol>
+  <li><a href="#The-Fundamental-Theorem-of-Arithmetic">The Fundamental Theorem of Arithmetic</a></li>
+  <li><a href="#Proof-example-by-contradiction-with-FTA">Proof example by contradiction with FTA</a></li>
+</ol>
+
+<h2 id="the-fundamental-theorem-of-arithmeticfta">The Fundamental Theorem of Arithmetic(FTA)</h2>
+<p>Given any integer $n&gt;1$, there exists a positive integer $k$, distinct prime numbers $p_1,p_2,\ldots,p_k$, and positive integers $e_1,e_2,\ldots,e_k$ such that</p>
+<center>$n = p_{1}^{e_1}p_{2}^{e_2}p_{3}^{e_3}\ldots p_{k}^{e_k}$</center>
+<p>and any other expression of $n$ as a product of powers of primes is identical to this except, perhaps, for the order in which the factors are written.</p>
+
+<h2 id="proof-example-by-contradiction-with-fta">Proof example by contradiction with FTA</h2>
+<h4 id="prove-that-sqrt22-is-irrational">Prove that $\sqrt{22}$ is irrational.</h4>
+<p><strong>Proof</strong> : <strong>Contradiction</strong>. 
+<br /> 
+Assume that $\sqrt{22}$ is rational. Then $\sqrt{22}$ can be expressed as a fraction $\sqrt{22} = \frac{p}{q}$ with $p \in \mathbb{Z}$ and $q \in \mathbb{Z^+}$.
+<br /> 
+Then</p>
+<center>$22~=~\frac{p^2}{q^2}$ </center>
+<center>$p^2~=~22q^2$</center>
+<p>From the second equation it follows that $p^2~ =~ 2 \times 11q^2$.  <br />
+<br /> 
+According to $\textbf{The Fundamental Theorem of Arithmetic(FTA)}$, we have that any positive integer can be expressed as</p>
+<center>$\prod^{n}_{i=1} m_i^{e_i}$</center>
+<p>where $m_i$ is prime number and $e_i \in \mathbb{Z^+}$.  <br />
+<br /> 
+We can assume for $p^2$, since it has a power of 2, that all the $e_i$ for $p^2$ should be even. The same can be applied to $q^2$ that all the $e_i$ for $q^2$ should be even. So that in the expression for $2 \times 11q^2$, the power for prime number 2 should be odd and the power for prime number 11 should be odd. This is a contradiction to the statement that all the $e_i$ for $p^2$ should be even. So that $\sqrt{22}$ is not rational, naming that $\sqrt{22}$ irrational. <br />
+$Q.E.D$
+<br />
 <br /></p>
 
+<hr />
+<h4 id="footnotes">FOOTNOTES</h4>
+<p>All the contents are based on the course materials provided by <a href="https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index">Dr. Clayton Greenberg</a>.</p>
 
-          <p class="note-post-list">
-            
 
-              
-                <span class="note-post-date">11/4/20</span>
-                <a href="/2020/11/04/FTA" class="note-post-title">
-                  The Fundamental Theorem of Arithmetic
-                </a>
-                <br />
+          </article>
 
-              
+          
 
-            
-
-              
-                <span class="note-post-date">11/3/20</span>
-                <a href="/2020/11/03/Graph0" class="note-post-title">
-                  Graph Theorem 0 - Proof Patterns
-                </a>
-                <br />
-
-              
-
-            
-
-              
-                <span class="note-post-date">7/1/20</span>
-                <a href="/2020/07/01/Clocle" class="note-post-title">
-                  CloClé - The Summary
-                </a>
-                <br />
-
-              
-
-            
-          </p>
-        </div>
+      </div>
       </div>
     </div>
 

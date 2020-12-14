@@ -1,4 +1,131 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-13T04:57:11-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">CloClé - The Summary</title><link href="https://yj-guo.github.io/2020/07/01/Clocle.html" rel="alternate" type="text/html" title="CloClé - The Summary" /><published>2020-07-01T11:00:00-04:00</published><updated>2020-07-01T11:00:00-04:00</updated><id>https://yj-guo.github.io/2020/07/01/Clocl%C3%A9</id><content type="html" xml:base="https://yj-guo.github.io/2020/07/01/Clocle.html">&lt;p&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/poster_f.jpg&quot; alt=&quot;The CloClé Poster&quot; class=&quot;post-pic&quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-13T20:16:19-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">The Fundamental Theorem of Arithmetic</title><link href="https://yj-guo.github.io/2020/11/04/FTA.html" rel="alternate" type="text/html" title="The Fundamental Theorem of Arithmetic" /><published>2020-11-04T05:00:17-05:00</published><updated>2020-11-04T05:00:17-05:00</updated><id>https://yj-guo.github.io/2020/11/04/FTA</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/04/FTA.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+
+&lt;h2 id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#The-Fundamental-Theorem-of-Arithmetic&quot;&gt;The Fundamental Theorem of Arithmetic&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Proof-example-by-contradiction-with-FTA&quot;&gt;Proof example by contradiction with FTA&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;the-fundamental-theorem-of-arithmeticfta&quot;&gt;The Fundamental Theorem of Arithmetic(FTA)&lt;/h2&gt;
+&lt;p&gt;Given any integer $n&amp;gt;1$, there exists a positive integer $k$, distinct prime numbers $p_1,p_2,\ldots,p_k$, and positive integers $e_1,e_2,\ldots,e_k$ such that&lt;/p&gt;
+&lt;center&gt;$n = p_{1}^{e_1}p_{2}^{e_2}p_{3}^{e_3}\ldots p_{k}^{e_k}$&lt;/center&gt;
+&lt;p&gt;and any other expression of $n$ as a product of powers of primes is identical to this except, perhaps, for the order in which the factors are written.&lt;/p&gt;
+
+&lt;h2 id=&quot;proof-example-by-contradiction-with-fta&quot;&gt;Proof example by contradiction with FTA&lt;/h2&gt;
+&lt;h4 id=&quot;prove-that-sqrt22-is-irrational&quot;&gt;Prove that $\sqrt{22}$ is irrational.&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Proof&lt;/strong&gt; : &lt;strong&gt;Contradiction&lt;/strong&gt;. 
+&lt;br /&gt; 
+Assume that $\sqrt{22}$ is rational. Then $\sqrt{22}$ can be expressed as a fraction $\sqrt{22} = \frac{p}{q}$ with $p \in \mathbb{Z}$ and $q \in \mathbb{Z^+}$.
+&lt;br /&gt; 
+Then&lt;/p&gt;
+&lt;center&gt;$22~=~\frac{p^2}{q^2}$ &lt;/center&gt;
+&lt;center&gt;$p^2~=~22q^2$&lt;/center&gt;
+&lt;p&gt;From the second equation it follows that $p^2~ =~ 2 \times 11q^2$.  &lt;br /&gt;
+&lt;br /&gt; 
+According to $\textbf{The Fundamental Theorem of Arithmetic(FTA)}$, we have that any positive integer can be expressed as&lt;/p&gt;
+&lt;center&gt;$\prod^{n}_{i=1} m_i^{e_i}$&lt;/center&gt;
+&lt;p&gt;where $m_i$ is prime number and $e_i \in \mathbb{Z^+}$.  &lt;br /&gt;
+&lt;br /&gt; 
+We can assume for $p^2$, since it has a power of 2, that all the $e_i$ for $p^2$ should be even. The same can be applied to $q^2$ that all the $e_i$ for $q^2$ should be even. So that in the expression for $2 \times 11q^2$, the power for prime number 2 should be odd and the power for prime number 11 should be odd. This is a contradiction to the statement that all the $e_i$ for $p^2$ should be even. So that $\sqrt{22}$ is not rational, naming that $\sqrt{22}$ irrational. &lt;br /&gt;
+$Q.E.D$
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Graph Theorem 0 - Proof Patterns</title><link href="https://yj-guo.github.io/2020/11/03/Graph0.html" rel="alternate" type="text/html" title="Graph Theorem 0 - Proof Patterns" /><published>2020-11-03T15:30:20-05:00</published><updated>2020-11-03T15:30:20-05:00</updated><id>https://yj-guo.github.io/2020/11/03/Graph0</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/03/Graph0.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;Graphs are often too large to interpret manually, so we use contrapositive proofs, contradiction proofs, and induction proofs to reason about arbitrary graphs. The Fibonacci numbers will also be covered as bonus.
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#Converse-and-Contrapositive&quot;&gt;Converse and Contrapositive&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Contradiction&quot;&gt;Contradiction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Ordinary-Induction&quot;&gt;Ordinary Induction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Strong-Induction&quot;&gt;Strong Induction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Recurrence&quot;&gt;Recurrence&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;converse-and-contrapositive&quot;&gt;Converse and Contrapositive&lt;/h2&gt;
+&lt;h4 id=&quot;converse&quot;&gt;Converse&lt;/h4&gt;
+&lt;p&gt;The &lt;strong&gt;converse&lt;/strong&gt; of “if $p$ the $q$” is “if $q$ then $p$”. &lt;br /&gt;
+In logic notation: the &lt;strong&gt;converse&lt;/strong&gt; of $p \Rightarrow q$ is $q \Rightarrow p$.
+&lt;br /&gt;
+Generally, the converse is not logically equivalent to the original implication.
+&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;contrapositive&quot;&gt;Contrapositive&lt;/h4&gt;
+&lt;p&gt;The &lt;strong&gt;contrapositive&lt;/strong&gt; of “if $p$ the $q$” is “if (not $q$) then (not $p$)”. &lt;br /&gt;
+In logic notation: the &lt;strong&gt;contrapositive&lt;/strong&gt; of $p \Rightarrow q$ is $\neg q \Rightarrow \neg p$. &lt;br /&gt;
+Note that the &lt;strong&gt;contrapositive&lt;/strong&gt; is &lt;strong&gt;logically equivalent&lt;/strong&gt; to the original implication, which leads to a &lt;strong&gt;proof pattern&lt;/strong&gt; that instead of the implication, prove its contrapositive.&lt;/p&gt;
+
+&lt;p&gt;Tips: the contrapositive doesn’t change the &lt;strong&gt;quantifiers&lt;/strong&gt; like $\forall$ and $\exists$. 
+For example, the contrapositive for
+&lt;br /&gt;&lt;/p&gt;
+&lt;center&gt;&quot;for any integers $x,y$, if $xy$ is even then $x$ is even or $y$ is even&quot; &lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;
+is
+&lt;br /&gt;&lt;/p&gt;
+&lt;center&gt;&quot;for any integers $x,y$, if $x$ is odd and $y$ is odd then $xy$ is odd&quot;.&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;contradiction&quot;&gt;Contradiction&lt;/h2&gt;
+&lt;p&gt;A statement of the form “$P$ and (not $P$)” is called a &lt;strong&gt;contradiction&lt;/strong&gt;. It is always &lt;strong&gt;false&lt;/strong&gt;. &lt;br /&gt;
+Here a new &lt;strong&gt;proof pattern&lt;/strong&gt; is introduced that to prove “$P$” we can instead prove “if (not $P$) then $C$”, where $C$ stands for a statement that is a contradiction. This proof pattern can be justified by the logical equivalence that $p \equiv \neg p \Rightarrow F$. &lt;br /&gt;
+Also, if we want to prove “if $P$ then $Q$” we can instead prove “if $P$ and (not $Q$) then $C$”, which is another &lt;strong&gt;proof pattern&lt;/strong&gt;. This proof pattern is justified by the logical equivalence that $p \Rightarrow q \equiv p \wedge \neg q \Rightarrow F$. A proof example is given in note &lt;a href=&quot;/2020/11/04/FTA&quot;&gt;The Fundamental Theorem of Arithmetic&lt;/a&gt; &lt;br /&gt;
+Note that any proof by contrapositive can be converted into a proof by contradiction.
+&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;ordinary-induction&quot;&gt;Ordinary Induction&lt;/h2&gt;
+&lt;p&gt;Induction is a useful proof pattern for statements in the form: “for all nature numbers $n$ we have $P(n)$”, where $P(n)$ is a predicate whose truth depends on $n$. In logical notation: $\forall n \in \mathbb{N}\ P(n)$.&lt;/p&gt;
+&lt;h3 id=&quot;proof-pattern-of-ordinary-induction&quot;&gt;Proof Pattern of Ordinary Induction&lt;/h3&gt;
+&lt;p&gt;Let $P(n)$ be a predicate whose truth depends on $n$. &lt;br /&gt;
+&lt;strong&gt;Proof pattern:&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;(Base Case)&lt;/strong&gt; Check that $P(0)$ holds true. &lt;br /&gt;
+&lt;strong&gt;(Induction Step)&lt;/strong&gt; Let $k$ be an arbitrary natural number. Assume $\textbf{P(k)}.$ Using that derive $P(k+1)$. &lt;br /&gt;
+Conclude $\forall n \in \mathbb{N} \ P(n)$. &lt;br /&gt;
+&lt;br /&gt;
+The $P(k)$ inside the box in the induction step is called the &lt;strong&gt;Induction Hypothesis(IH)&lt;/strong&gt;. The IH must be stated inside the induction step because it refers to $k$. &lt;br /&gt;
+In logical notation the induction step is $\forall k \in \mathbb{N}\ \ P(k) \Rightarrow P(k+1)$.  &lt;br /&gt;
+&lt;br /&gt;
+There is also a &lt;strong&gt;variant&lt;/strong&gt; proof pattern for ordinary induction:    &lt;br /&gt;
+Let $n_0$ be a natural number and let $P(n)$ be a predicate that is well defined for all natural numbers $n\geq n_0$.
+&lt;br /&gt;
+&lt;strong&gt;Proof pattern:&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;(Base Case)&lt;/strong&gt; Check that $P(n_0)$ holds true. &lt;br /&gt;
+&lt;strong&gt;(Induction Step)&lt;/strong&gt; Let $k\geq n_0$ be an arbitrary natural number. Assume $\textbf{P(k)}.$ Using that derive $P(k+1)$. &lt;br /&gt;
+Conclude $\forall n \geq n_0 \ P(n)$. &lt;br /&gt;
+Induction is a powerful proof method in graph theorem. By doing induction on vertices or edges, problems can be solved.&lt;/p&gt;
+&lt;h2 id=&quot;strong-induction&quot;&gt;Strong Induction&lt;/h2&gt;
+&lt;p&gt;Let $n_0$ be a natural number and let $P(n)$ be a predicate that is well defined for all natural numbers $n\geq n_0$.  &lt;br /&gt;
+&lt;strong&gt;Proof pattern:&lt;/strong&gt; &lt;br /&gt;
+&lt;strong&gt;(Base Case)&lt;/strong&gt; Drive/infer $P(n_0)$. &lt;br /&gt;
+&lt;strong&gt;(Induction Step)&lt;/strong&gt; Let $k \in \mathbb{N}$ such that $k \geq n_0$. Assume $P(n_0)$ and $\ldots$ and $P(k)$. Using that derive $P(k+1)$. &lt;br /&gt;
+Conclude $\forall n \geq n_0 \ P(n)$.   &lt;br /&gt;
+The IH $P(n_0)$ and $\ldots$ and $P(k)$ is stronger than $P(k)$. But strong induction is &lt;strong&gt;mathematically equivalent&lt;/strong&gt; to the ordinary induction.&lt;/p&gt;
+
+&lt;h2 id=&quot;recurrence&quot;&gt;Recurrence&lt;/h2&gt;
+&lt;p&gt;The Fibonacci recurrence is given by&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$F_0 = 0$&lt;/li&gt;
+  &lt;li&gt;$F_1 = 1$&lt;/li&gt;
+  &lt;li&gt;$F_n = F_{n-1} + F_{n-2} \  (n\geq 2)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Fibonacci recurrence can be solve with $F_n = \frac{(\psi ^n -\  \phi ^n)}{\sqrt{5}}$, where $\psi &amp;gt; \phi$ are the two roots of the equation $x^2 - x - 1 = 0$.  &lt;br /&gt;
+$\psi = \frac{(1+ \sqrt{5})}{2}$ is known as the &lt;strong&gt;Golden Ratio&lt;/strong&gt; and $\phi = \frac{(1- \sqrt{5})}{2}$. &lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Some useful equations based on Fibonacci numbers&lt;/strong&gt; &lt;br /&gt;
+$F_{n-1} \cdot F_{n+1} - F_{n}^2 = (-1)^n$
+&lt;br /&gt;
+&lt;br /&gt;
+$\sum_{i=0}^{n}i\cdot F_{2i} = (n+1)F_{2n+1}-F_{2n+2}$
+&lt;br /&gt;
+&lt;br /&gt;
+$\sum_{i=0}^{n}F_i^2\cdot F_{i+1}=\frac{1}{2}F_{n+2}F_{n+1}F_{n}$
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Graphs are often too large to interpret manually, so we use contrapositive proofs, contradiction proofs, and induction proofs to reason about arbitrary graphs. The Fibonacci numbers will also be covered as bonus.</summary></entry><entry><title type="html">CloClé - The Summary</title><link href="https://yj-guo.github.io/2020/07/01/Clocle.html" rel="alternate" type="text/html" title="CloClé - The Summary" /><published>2020-07-01T11:00:00-04:00</published><updated>2020-07-01T11:00:00-04:00</updated><id>https://yj-guo.github.io/2020/07/01/Clocl%C3%A9</id><content type="html" xml:base="https://yj-guo.github.io/2020/07/01/Clocle.html">&lt;p&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/CloCl%C3%A9/poster_f.jpg&quot; alt=&quot;The CloClé Poster&quot; class=&quot;post-pic&quot; /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
 This is the final poster for our CloClé clothes caring machine.&lt;/p&gt;
