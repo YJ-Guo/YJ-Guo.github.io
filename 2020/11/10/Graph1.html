@@ -63,7 +63,8 @@
     MathJax.Hub.Config({
         tex2jax: {
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        inlineMath: [['$','$']]
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']]
         }
     });
 </script>
@@ -144,6 +145,9 @@
   <li><a href="#walks-and-paths" id="markdown-toc-walks-and-paths">Walks and Paths</a></li>
   <li><a href="#connected-components" id="markdown-toc-connected-components">Connected Components</a></li>
   <li><a href="#counting-connected-components" id="markdown-toc-counting-connected-components">Counting Connected Components</a></li>
+  <li><a href="#graph-isomorphism" id="markdown-toc-graph-isomorphism">Graph isomorphism</a></li>
+  <li><a href="#subgraph" id="markdown-toc-subgraph">Subgraph</a></li>
+  <li><a href="#cycles" id="markdown-toc-cycles">Cycles</a></li>
 </ol>
 
 <h2 id="graph-terminology-and-notation">Graph Terminology and Notation</h2>
@@ -166,7 +170,8 @@ A vertex of degree 0 is called <strong>isolated</strong>.</p>
 <h2 id="the-handshaking-lemma">The Handshaking Lemma</h2>
 <p>The sum of the degrees of all nodes in a graph is <strong>twice</strong> the number of edges, that is</p>
 <center>$\sum_{v\in V} deg(v) = 2 |E|$</center>
-<p><strong>Proposition:</strong> In any graph there are an even number of vertices of odd degree.</p>
+<p><strong>Corollary:</strong> In any graph there are an even number of vertices of odd degree. <br />
+The proof of this corollary can be found at <a href="/2020/11/11/HSL">The Proof of Handshake Lemma’s Corollary by Induction</a>.</p>
 
 <h2 id="special-graphs">Special Graphs</h2>
 <h4 class="no_toc" id="edgeless-graphs">Edgeless graphs</h4>
@@ -178,7 +183,8 @@ Therefore, $K_n = (V,E)$ where $|V| = n$ and $|E| = \{\{u,v\}|u,v\in V\}.$</p>
 <center><img src="https://yj-guo.github.io/assets/img/content/GT1/completeG.png" alt="Complete graphs" class="post-pic" /></center>
 <p>The number of edges in $k_n$ is the number of unordered pairs $\binom{n}{2} = \frac{n(n-1)}{2}$.</p>
 <h4 class="no_toc" id="path-graphs">Path graphs</h4>
-<p>A <strong>path</strong> graph on $n\geq 1$ vertices, notation $P_n$, has $n$ vertices and $n-1$ edges arranged “in a row”.</p>
+<p>A <strong>path</strong> graph on $n\geq 1$ vertices, notation $P_n$, has $n$ vertices and $n-1$ edges arranged “in a row”.
+A <strong>path graph on</strong> $n$ <strong>vertices</strong> is a graph <a href="#graph-isomorphism">isomorphic</a> to $P_n$. Hence, a path graph of length $l$ is a graph isomorphic to $P_{l+1}.$</p>
 <center><img src="https://yj-guo.github.io/assets/img/content/GT1/pathG.png" alt="Path graphs" class="post-pic" /></center>
 <p>Note that for $n\geq3$ we have two vertices of degree 1 in $P_n$ and the rest have degree 2.</p>
 <h4 class="no_toc" id="cycle-graphs">Cycle graphs</h4>
@@ -236,8 +242,33 @@ The $m\times n$ grid graphs are connected.</p>
 <strong>Proposition:</strong> In any graph $G = (V,E)$ we have $|E|\geq|V|-|CC|$. <br />
 <strong>Proposition:</strong> $|E| \leq \binom{|V|}{2}$. <br />
 <strong>Corollary:</strong> Every connected graph with $n$ vertices has $n-1$ or more edges.</p>
-
-<p><br />
+<h2 id="graph-isomorphism">Graph isomorphism</h2>
+<p>Two graphs $G_1 = (V_1,E_1)$ and $G_2 = (V_2,E_2)$ are <strong>isomorphic</strong>, notation $G_1\simeq G_2$, when there is a <strong>bijection</strong> $\beta : V_1 \rightarrow V_2$ such that for any $u_1,v_1 \in V_1$ we have $u_1 \mathrm{-}v_1 \in E_1$ <strong>iff</strong> $\beta(u_1)\mathrm{-}\beta(v_1)\in E_2$.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/isoG.png" alt="Example isomorphic graph" class="post-pic" /></center>
+<p>$G_1\simeq G_2$ by the bijection $4\mapsto 5, 2\mapsto 6, 1\mapsto 7, 3\mapsto 8$ <br />
+<strong>proposition:</strong> Any two complete graphs are isomorphic iff they have the same number of vertices. The same holds for path, cycle, and edgeless graphs. <br />
+Any two $m\times n$ grids are isomorphic, as well as isomorphic to any $n\times m$ grids.</p>
+<h2 id="subgraph">Subgraph</h2>
+<p>A graph $G_1 = (V_1,E_1)$ is a <strong>subgraph</strong> of the graph $G_2 = (V_2,E_2)$ when $V_1 \subseteq V_2$ and $E_1 \subseteq E_2$.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/subG.png" alt="Subgraph Example" class="post-pic" /></center>
+<p>Here, $G_1$ is a subgraph of $G_2$.</p>
+<h4 class="no_toc" id="induced-subgraphs">Induced subgraphs</h4>
+<p>If $G = (V,E)$ is a graph and $V’ \subseteq V$ is a set consisting of some of $G$’s nodes, the subgraph of $G$ <strong>induced</strong> by $V’$ is the graph $G’=(V’,E’)$ where $E’$ consists of all the edges of $G$ whose endpoints are both in $V’$.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/induceG.png" alt="Induced Subgraph" class="post-pic" /></center>
+<p>$G’$ is the subgraph of $G$ <strong>induced</strong> by the subset of vertices $\{1,2,3\}$. <br />
+The subgraph of $G$ induced by $\{2, 3, 4\}$ is path graph of length 2. <br />
+The subgraph of $G$ induced by $\{1, 3, 4\}$ is disconnected.</p>
+<h2 id="cycles">Cycles</h2>
+<h4 class="no_toc" id="closed-walks-and-cycles">Closed Walks and Cycles</h4>
+<p>A <strong>closed walk</strong> is a walk in which the first and the last vertex are the same. <br />
+A <strong>cycle</strong> is a closed walk of <strong>length at least 3</strong> in which all nodes are pairwise distinct, except for the last and the first. <br />
+The <strong>length</strong> of the cycle is the length of the closed walk. <br />
+When we count the <strong>cycles of length</strong> $n$ in a graph $G$, we count in facet the subgraphs of $G$ that are cycle graphs on $n$ vertices.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT1/cycG.png" alt="Counting Cycles" class="post-pic" /></center>
+<p>In graph $G$, $1\mathrm{-}2\mathrm{-}3\mathrm{-}4\mathrm{-}2\mathrm{-}1$ is a closed walk but not a cycle. $2\mathrm{-}3\mathrm{-}4\mathrm{-}2$ is a cycle of length 3.
+<br />
+<a href="/2020/11/03/Graph0">Previous: Graph Theorem 0 - Proof Patterns</a> <br />
+<a href="/2020/11/18/Graph2">Next: Graph Theorem 2 - Trees</a>
 <br /></p>
 
 <hr />
@@ -320,7 +351,7 @@ The $m\times n$ grid graphs are connected.</p>
             Go to <a href="/code"> Code</a> |
             Go to <a href="/love"> Love</a>
             <br>
-            powered by <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
+            powered by <a href="https://jekyllrb.com/">Jekyll</a> | Theme <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
           </p>
         </div>
       

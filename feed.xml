@@ -1,4 +1,367 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-14T17:11:18-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">Graph Theorem 1 - Introduction to Graphs</title><link href="https://yj-guo.github.io/2020/11/10/Graph1.html" rel="alternate" type="text/html" title="Graph Theorem 1 - Introduction to Graphs" /><published>2020-11-10T17:17:30-05:00</published><updated>2020-11-10T17:17:30-05:00</updated><id>https://yj-guo.github.io/2020/11/10/Graph1</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/10/Graph1.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://yj-guo.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yj-guo.github.io/" rel="alternate" type="text/html" /><updated>2020-12-16T22:03:39-05:00</updated><id>https://yj-guo.github.io/feed.xml</id><title type="html">Guo’s Blog</title><subtitle>This is Guo's record for his notes and codes.</subtitle><entry><title type="html">Graph Theorem 3 - Directed Graphs</title><link href="https://yj-guo.github.io/2020/12/01/Graph3.html" rel="alternate" type="text/html" title="Graph Theorem 3 - Directed Graphs" /><published>2020-12-01T18:14:02-05:00</published><updated>2020-12-01T18:14:02-05:00</updated><id>https://yj-guo.github.io/2020/12/01/Graph3</id><content type="html" xml:base="https://yj-guo.github.io/2020/12/01/Graph3.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#directed-graph&quot; id=&quot;markdown-toc-directed-graph&quot;&gt;Directed Graph&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#digraph-terminology&quot; id=&quot;markdown-toc-digraph-terminology&quot;&gt;Digraph Terminology&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reachability&quot; id=&quot;markdown-toc-reachability&quot;&gt;Reachability&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#strong-connectivity&quot; id=&quot;markdown-toc-strong-connectivity&quot;&gt;Strong Connectivity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#directed-acyclic-graph-dags&quot; id=&quot;markdown-toc-directed-acyclic-graph-dags&quot;&gt;Directed Acyclic Graph (DAGs)&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#topological-sort&quot; id=&quot;markdown-toc-topological-sort&quot;&gt;Topological Sort&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#binary-trees&quot; id=&quot;markdown-toc-binary-trees&quot;&gt;Binary Trees&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#adjacency-matrices&quot; id=&quot;markdown-toc-adjacency-matrices&quot;&gt;Adjacency Matrices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#incidence-matrices&quot; id=&quot;markdown-toc-incidence-matrices&quot;&gt;Incidence Matrices&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;directed-graph&quot;&gt;Directed Graph&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;directed graph (digraph)&lt;/strong&gt; $G=(V,E)$ consists of a non-empty set $V$ of &lt;strong&gt;vertices&lt;/strong&gt; (nodes) and a set $E\subseteq V\times V$ of directed &lt;strong&gt;edes&lt;/strong&gt; which are &lt;strong&gt;ordered&lt;/strong&gt; pairs of vertices.  &lt;br /&gt;
+This allows &lt;strong&gt;self-loops&lt;/strong&gt; $(v,v)\in E$ where $v\in V$ but not for &lt;strong&gt;parallel&lt;/strong&gt; edges. We can also have &lt;strong&gt;anti-parallel&lt;/strong&gt; edges $(u,v)(v,u)\in E$ where $u,v \in V.$&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/diG.png&quot; alt=&quot;A Directed Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;We use notation $u\rightarrow v$ for both the edge $(u,v)$ itself and for the fact that $(u,v)\in E$. $u\rightarrow v$ is an &lt;strong&gt;outgoing&lt;/strong&gt; edge &lt;strong&gt;from&lt;/strong&gt; $u$ and an &lt;strong&gt;incoming&lt;/strong&gt; edge &lt;strong&gt;to&lt;/strong&gt; $v$. &lt;br /&gt;
+If $u\rightarrow v$ then $v$ is a &lt;strong&gt;successor&lt;/strong&gt; of $u$ and $u$ is a predecessor of $v$. Moreover, $u$ and $v$ are &lt;strong&gt;neighbors&lt;/strong&gt;, when $u\rightarrow v$ or $v\rightarrow u$, a symmetric relationship. Since we allow self-loops, a vertex can be its own neighbor in which case it is also its own predecessor and its own successor.  &lt;br /&gt;
+&lt;strong&gt;Isolated vertices:&lt;/strong&gt; vertices with no neighbors.   &lt;br /&gt;
+&lt;strong&gt;Edgeless digraph:&lt;/strong&gt; just like an edgeless graph.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/diG2.png&quot; alt=&quot;A Directed Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h2 id=&quot;digraph-terminology&quot;&gt;Digraph Terminology&lt;/h2&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;degrees&quot;&gt;Degrees&lt;/h3&gt;
+&lt;p&gt;The &lt;strong&gt;outdegree&lt;/strong&gt; of a vertex $u$ is the number of successors of $u$, same as the number of outgoing edges from $u$, denoted out($u$).  &lt;br /&gt;
+Similarly, the &lt;strong&gt;indegree&lt;/strong&gt; of a vertex $u$ is the number of predecessors of $u$, same as the number of incoming edges to $u$, denoted in($u$).   &lt;br /&gt;
+The &lt;strong&gt;degree&lt;/strong&gt; of a node is deg($u$) $=$ out($u$) + in($u$). A node of indegree 0 is called a &lt;strong&gt;source&lt;/strong&gt; and a node of outdegree 0 is called a &lt;strong&gt;sink&lt;/strong&gt;.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; The sum of the outdegrees of all vertices equals the sum of the indegrees of all vertices and further equals the number of edges. Therefore, the sum of the degrees equals twice the number of edges.&lt;/p&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;directed-walk-and-path&quot;&gt;Directed Walk and Path&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;directed walk&lt;/strong&gt; is a non-empty sequence $u_0,u_1,\ldots,u_k$ such that $u_0\rightarrow u_1 \rightarrow \ldots \rightarrow u_k$.     &lt;br /&gt;
+We call this a directed walk &lt;strong&gt;from&lt;/strong&gt; $u_0$ &lt;strong&gt;to&lt;/strong&gt; $u_k$ of length $k$.  &lt;br /&gt;
+A &lt;strong&gt;directed path&lt;/strong&gt; is a walk with no repeated vertices.  &lt;br /&gt;
+For every vertex $v$ there is a directed path of length 0: $v$.  &lt;br /&gt;
+Do not confuse the directed walk of length 0, $u$ with the directed walk of length 1 given by the existence of a self-loop: $v\rightarrow v$.  &lt;br /&gt;
+Walks of length 0 are paths but walks of length 1 given by self-loops are not paths.&lt;/p&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;directed-cycles&quot;&gt;Directed Cycles&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;directed cycle&lt;/strong&gt; is a closed walk $u_0\rightarrow u_1 \rightarrow \ldots \rightarrow u_k \rightarrow u_0$, with $u_0,u_1,\ldots,u_k$ all distinct. The &lt;strong&gt;length&lt;/strong&gt; of the cycle is $k + 1$.  &lt;br /&gt;
+There are no cycles of length 0. A self-loop gives a cycle of length 1. A cycle of length 2 consists of two vertices and edges between them in opposite directions (antiparallel edges).   &lt;br /&gt;
+Path digraphs, cycle digraphs (including of length 1 and 2) and digraph isomorphism are defined similarly to the undirected case.&lt;/p&gt;
+&lt;h2 id=&quot;reachability&quot;&gt;Reachability&lt;/h2&gt;
+&lt;p&gt;A vertex $v$ is &lt;strong&gt;reachable&lt;/strong&gt; from a vertex $u$ when there is a walk (and therefore a path) from $u$ to $v$. We write $u\twoheadrightarrow v$ for the &lt;strong&gt;reachability relation&lt;/strong&gt;.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; The reachability relation is &lt;strong&gt;reflexive&lt;/strong&gt;, i.e., $u\twoheadrightarrow u$ and &lt;strong&gt;transitive&lt;/strong&gt;, i.e., $u\twoheadrightarrow v$ and $v\twoheadrightarrow w$ imply $u\twoheadrightarrow w$.   &lt;br /&gt;
+The relation $u\twoheadrightarrow v$ is called the &lt;strong&gt;reflexive-transitive closure&lt;/strong&gt; of the (edge) relation $u\rightarrow v$.&lt;/p&gt;
+&lt;h2 id=&quot;strong-connectivity&quot;&gt;Strong Connectivity&lt;/h2&gt;
+&lt;p&gt;Two vertices of a digraph, $u$ and $v$, are strongly connected when $v$ is reachable from $u$ and $u$ is reachable from $v$, i.e., $u\twoheadrightarrow v$ and $v\twoheadrightarrow u$. &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Strong connectivity is &lt;strong&gt;reflexive&lt;/strong&gt;, &lt;strong&gt;symmetric&lt;/strong&gt; and &lt;strong&gt;transitive&lt;/strong&gt;. &lt;br /&gt;
+A set of vertices is strongly connected when any two of its vertices are strongly connected.  &lt;br /&gt;
+The &lt;strong&gt;maximally&lt;/strong&gt; strongly connected sets of vertices are called &lt;strong&gt;strongly connected components (scc’s)&lt;/strong&gt;.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Any two distinct strongly connected components are &lt;strong&gt;disjoint&lt;/strong&gt;. &lt;br /&gt;
+&lt;strong&gt;Corollary:&lt;/strong&gt; The strongly connected components determine a &lt;strong&gt;partition&lt;/strong&gt; of the vertices (but not of the edges!).&lt;/p&gt;
+&lt;h2 id=&quot;directed-acyclic-graph-dags&quot;&gt;Directed Acyclic Graph (DAGs)&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;directed acyclic graphs (DAG)&lt;/strong&gt; is a digraph without directed cycles (not even of length 1).  &lt;br /&gt;
+Here is an example DAG of course prerequisites.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/daG.png&quot; alt=&quot;An Example DAG&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h3 id=&quot;topological-sort&quot;&gt;Topological Sort&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;topological sort&lt;/strong&gt; of a digraph is a sequence $\sigma$ in which every vertex appears exactly once (i.e., a permutation of its vertices) such that for any edge $u\rightarrow v$ in the graph, the vertex $u$ appears in $\sigma$ &lt;strong&gt;before&lt;/strong&gt; (but not necessarily &lt;strong&gt;immediately&lt;/strong&gt; before) the vertex $v$.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; If a digraph has a topological sort then:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The first vertex in the sort is a source and the last is a sink.&lt;/li&gt;
+  &lt;li&gt;The digraph is a DAG.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Every DAG has at least one source and at least one sink.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Every DAG has at least one topological sort.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;topological-sort-construction-algorithm&quot;&gt;Topological Sort Construction Algorithm&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Input:&lt;/strong&gt; a DAG $G = (V,E)$ with $n$ vertices.     &lt;br /&gt;
+&lt;strong&gt;Output:&lt;/strong&gt; a permutation $\sigma$ of $V$ that is a topological sort.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;$G$ has at least one source, $u$. Remove $u$ and call $G_u$ the resulting digraph.    &lt;br /&gt;
+ (Removing $u$ cannot create a cycle since we only delete edges. $G_u$ is also a DAG.)&lt;/li&gt;
+  &lt;li&gt;Recursively construct a topological sort of $G_u$, i.e., a permutation $\sigma$ of $V \backslash \{u\}$. Then, concatenate $u$ at the beginning.&lt;/li&gt;
+  &lt;li&gt;Output $u\sigma$ is a topological sort of G.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;binary-trees&quot;&gt;Binary Trees&lt;/h2&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;rooted-trees&quot;&gt;Rooted Trees&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;rooted tree&lt;/strong&gt; is a pair $(T,r)$ where $T = (V,E)$ is a tree and the vertex $r \in V$ is designated as a &lt;strong&gt;root&lt;/strong&gt;.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Any edge of a rooted tree is traversed in the &lt;strong&gt;same direction&lt;/strong&gt; by all unique paths from the root to each of the other vertices.   &lt;br /&gt;
+Using this direction, make the rooted tree into a &lt;strong&gt;digraph&lt;/strong&gt;, in fact, a DAG with the root as source and tree leaves (or the root, when alone) as sinks.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/rootedT.png&quot; alt=&quot;An Example Rooted Tree&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;rooted-tree-terminology&quot;&gt;Rooted Tree Terminology&lt;/h3&gt;
+&lt;p&gt;We call &lt;strong&gt;leaves&lt;/strong&gt; the nodes of &lt;strong&gt;degree 1&lt;/strong&gt; in rooted trees. However, it is convenient to state that the single node of a one-node rooted tree is also a &lt;strong&gt;leaf&lt;/strong&gt;, although it has degree 0.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/RTT.png&quot; alt=&quot;An Rooted Tree Terminology&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;&lt;strong&gt;root:&lt;/strong&gt; $r$. &lt;br /&gt;
+&lt;strong&gt;leaves:&lt;/strong&gt; $1,5,8,6$. &lt;br /&gt;
+&lt;strong&gt;child&lt;/strong&gt; $=$ successor &lt;br /&gt;
+&lt;strong&gt;parent&lt;/strong&gt; $=$ predecessor   &lt;br /&gt;
+&lt;strong&gt;height&lt;/strong&gt; $=$ distance from root to farthest leaf height $=$ 4.  &lt;br /&gt;
+&lt;strong&gt;binary(rooted) tree:&lt;/strong&gt; every node has at most 2 children.&lt;/p&gt;
+
+&lt;h3 class=&quot;no_toc&quot; id=&quot;binary-trees-1&quot;&gt;Binary Trees&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; A binary tree of height $h$ has a maximum of $2^{h+1} − 1$ nodes among which are $2^h$ leaves. This maximum is attained for the &lt;strong&gt;complete binary tree&lt;/strong&gt; of height $h$.   &lt;br /&gt;
+We define a &lt;strong&gt;complete binary tree of height&lt;/strong&gt; $h$ to be a rooted tree in which every non-leaf node has two children and all leaves are at distance $h$ from the root.&lt;/p&gt;
+
+&lt;h2 id=&quot;adjacency-matrices&quot;&gt;Adjacency Matrices&lt;/h2&gt;
+&lt;p&gt;Two vertices in a graph are &lt;strong&gt;adjacent&lt;/strong&gt; if there is one &lt;strong&gt;edge&lt;/strong&gt; that is incident to both of them.   &lt;br /&gt;
+An &lt;strong&gt;adjacency matrix&lt;/strong&gt; for a digraph has one row and one column associated with &lt;strong&gt;each vertex&lt;/strong&gt;. If there is an edge from the vertex of the row to the vertex of the column, then the value in that position is &lt;strong&gt;1&lt;/strong&gt;. Otherwise, it is &lt;strong&gt;0&lt;/strong&gt;.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/imE1.png&quot; alt=&quot;An Example Adjacency Matrix&quot; class=&quot;post-pic&quot; /&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/am1.png&quot; alt=&quot;An Example Adjacency Matrix&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;We say an adjacency matrix because the order of the vertices is arbitrary!   &lt;br /&gt;
+For an &lt;strong&gt;undirected graph&lt;/strong&gt;, we can define an adjacency matrix three ways:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Only use the part strictly above the diagonal.&lt;/li&gt;
+  &lt;li&gt;Only use the part strictly below the diagonal.&lt;/li&gt;
+  &lt;li&gt;Copy each value to both locations (symmetric matrix).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;incidence-matrices&quot;&gt;Incidence Matrices&lt;/h2&gt;
+&lt;p&gt;An edge is &lt;strong&gt;incident&lt;/strong&gt; to a vertex if that vertex is either the beginning or the end of that edge.   &lt;br /&gt;
+An &lt;strong&gt;incidence matrix&lt;/strong&gt; for a digraph has one row associated with &lt;strong&gt;each edge&lt;/strong&gt; and one column associated with &lt;strong&gt;each vertex&lt;/strong&gt;. If an edge runs from vertex $a$ to vertex $b$, the row corresponding to that edge has &lt;strong&gt;-1&lt;/strong&gt; in column $a$ and &lt;strong&gt;1&lt;/strong&gt; in column $b$; all other entries in that row are &lt;strong&gt;0&lt;/strong&gt;.  &lt;br /&gt;
+We say an incidence matrix because the order of the edges and the order of the vertices are arbitrary!     &lt;br /&gt;
+Unlike adjacency matrices, incidence matrices are often not square! In fact, a square incidence matrix indicates that the graph has at least one cycle.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/imE1.png&quot; alt=&quot;An Example Incidence Matrix&quot; class=&quot;post-pic&quot; /&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT3/im2.png&quot; alt=&quot;An Example Incidence Matrix&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;the-connected-components-basis&quot;&gt;The Connected Components Basis&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;/strong&gt; Let $V$ be a set of vectors. A set of vectors $B$ is called a basis for $V$ if&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;the vectors in $B$ are linearly independent and&lt;/li&gt;
+  &lt;li&gt;Span($B$) $=$ $V$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Let $G$ be a graph and $A$ be its incidence matrix. A basis for the set of vectors $\vec x$ such that $A \vec x = \vec0$ represents a partition of $G$ into its connected components. The full set of vectors is called the &lt;strong&gt;nullspace&lt;/strong&gt; of $A$.&lt;/p&gt;
+
+&lt;h3 class=&quot;no_toc&quot; id=&quot;the-cycle-basis&quot;&gt;The Cycle Basis&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Let $G$ be a graph and $A$ be its incidence matrix. A basis for the set of vectors $\vec x$ such that $A \vec {x}^T = \vec0$ represents a reduced set of the undirected cycles in $G$. The full set of vectors is called the &lt;strong&gt;left nullspace&lt;/strong&gt; of A.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;/2020/11/18/Graph2&quot;&gt;Previous: Graph Theorem 2 - Trees&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Quick Guide</summary></entry><entry><title type="html">Graph Theorem 2 - Trees</title><link href="https://yj-guo.github.io/2020/11/18/Graph2.html" rel="alternate" type="text/html" title="Graph Theorem 2 - Trees" /><published>2020-11-18T05:54:32-05:00</published><updated>2020-11-18T05:54:32-05:00</updated><id>https://yj-guo.github.io/2020/11/18/Graph2</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/18/Graph2.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#acyclic-graphs-and-trees&quot; id=&quot;markdown-toc-acyclic-graphs-and-trees&quot;&gt;Acyclic Graphs and Trees&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#leaf&quot; id=&quot;markdown-toc-leaf&quot;&gt;Leaf&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#property-of-tree&quot; id=&quot;markdown-toc-property-of-tree&quot;&gt;Property of Tree&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#every-tree-is-minimally-connected&quot; id=&quot;markdown-toc-every-tree-is-minimally-connected&quot;&gt;Every Tree is minimally connected&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#every-tree-is-maximally-acyclic&quot; id=&quot;markdown-toc-every-tree-is-maximally-acyclic&quot;&gt;Every Tree is maximally acyclic&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#every-tree-is-unique-path-connected&quot; id=&quot;markdown-toc-every-tree-is-unique-path-connected&quot;&gt;Every Tree is unique-path connected&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unique-path-connectivity&quot; id=&quot;markdown-toc-unique-path-connectivity&quot;&gt;Unique path connectivity&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cut-edge&quot; id=&quot;markdown-toc-cut-edge&quot;&gt;Cut Edge&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#spanning-trees&quot; id=&quot;markdown-toc-spanning-trees&quot;&gt;Spanning Trees&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#two-algorithms-to-find-spanning-tree&quot; id=&quot;markdown-toc-two-algorithms-to-find-spanning-tree&quot;&gt;Two Algorithms to find Spanning Tree&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#the-edge-pruning-algorithm&quot; id=&quot;markdown-toc-the-edge-pruning-algorithm&quot;&gt;The edge-pruning algorithm&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#the-edge-growing-algorithm&quot; id=&quot;markdown-toc-the-edge-growing-algorithm&quot;&gt;The edge-growing algorithm&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#graph-coloring&quot; id=&quot;markdown-toc-graph-coloring&quot;&gt;Graph Coloring&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#bipartite-graphs&quot; id=&quot;markdown-toc-bipartite-graphs&quot;&gt;Bipartite Graphs&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#characterization-of-bipartite-graphs&quot; id=&quot;markdown-toc-characterization-of-bipartite-graphs&quot;&gt;Characterization of Bipartite Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#distance&quot; id=&quot;markdown-toc-distance&quot;&gt;Distance&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cliques-and-independent-sets&quot; id=&quot;markdown-toc-cliques-and-independent-sets&quot;&gt;Cliques and Independent Sets&lt;/a&gt;    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#cliques&quot; id=&quot;markdown-toc-cliques&quot;&gt;Cliques&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#independent-set&quot; id=&quot;markdown-toc-independent-set&quot;&gt;Independent set&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#complement-of-a-graph&quot; id=&quot;markdown-toc-complement-of-a-graph&quot;&gt;Complement of a graph&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;acyclic-graphs-and-trees&quot;&gt;Acyclic Graphs and Trees&lt;/h2&gt;
+&lt;p&gt;A graph in which there are no cycles is called &lt;strong&gt;acyclic&lt;/strong&gt;. The cc’s of an acyclic graph are also acyclic. &lt;br /&gt;
+A graph that is both &lt;strong&gt;connected&lt;/strong&gt; and &lt;strong&gt;acyclic&lt;/strong&gt; is called a &lt;strong&gt;tree&lt;/strong&gt;. &lt;br /&gt;
+Consequently, an acyclic graph is also called a &lt;strong&gt;forest&lt;/strong&gt; since all its cc’s are trees. &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Let $G_1$ and $G_2$ be two &lt;strong&gt;isomorphic&lt;/strong&gt; graphs, $G_1 \simeq G_2$. Then:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$G_1$ is acyclic iff $G_2$ is acyclic.&lt;/li&gt;
+  &lt;li&gt;$G_1$ is connected iff $G_2$ is connected.&lt;/li&gt;
+  &lt;li&gt;$G_1$ is a tree iff $G_2$ is a tree.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;number-of-edges-in-a-treeforest&quot;&gt;Number of edges in a tree/forest&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; A tree has one more vertex than edges. That is, if $G = (V,E)$ is a tree then $|E| = |V| - 1$. &lt;br /&gt;
+&lt;strong&gt;Corollary:&lt;/strong&gt; If $G = (V,E)$ is a forest then $|E| = |V| - |CC|$ where $|CC|$ is the set of cc’s of $G$. &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Any tree with $n$ vertices has $n-1$ edges.&lt;/p&gt;
+&lt;h2 id=&quot;leaf&quot;&gt;Leaf&lt;/h2&gt;
+&lt;p&gt;In a graph a &lt;strong&gt;leaf&lt;/strong&gt; is a node of degree 1.    &lt;br /&gt;
+&lt;strong&gt;Lemma:&lt;/strong&gt; Every tree with edges has at least one leaf.  &lt;br /&gt;
+&lt;strong&gt;Lemma:&lt;/strong&gt; Removing a leaf from a tree with edges leaves again a tree.&lt;/p&gt;
+&lt;h2 id=&quot;property-of-tree&quot;&gt;Property of Tree&lt;/h2&gt;
+&lt;h3 id=&quot;every-tree-is-minimally-connected&quot;&gt;Every Tree is minimally connected&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Removing &lt;strong&gt;any&lt;/strong&gt; edge in a tree disconnects it.&lt;/p&gt;
+&lt;h3 id=&quot;every-tree-is-maximally-acyclic&quot;&gt;Every Tree is maximally acyclic&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Adding an edge between &lt;strong&gt;any&lt;/strong&gt; two non-adjacent vertices in a tree creates a cycle.&lt;/p&gt;
+&lt;h3 id=&quot;every-tree-is-unique-path-connected&quot;&gt;Every Tree is unique-path connected&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Any two distinct vertices of a tree are connected by a &lt;strong&gt;unique&lt;/strong&gt; path.&lt;/p&gt;
+&lt;h3 id=&quot;unique-path-connectivity&quot;&gt;Unique path connectivity&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; A graph such that any two distinct vertices are connected by a unique path must be a tree. &lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Lemma:&lt;/strong&gt; Adding an edge to an acyclic graph creates &lt;strong&gt;at most&lt;/strong&gt; one cycle. &lt;br /&gt;
+&lt;strong&gt;Lemma:&lt;/strong&gt; Any closed walk of non-zero length that traverses at least one of its edges &lt;strong&gt;exactly once&lt;/strong&gt; contains a &lt;strong&gt;cycle&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;cut-edge&quot;&gt;Cut Edge&lt;/h2&gt;
+&lt;p&gt;Let $G=(V,E)$ be a graph. An edge of $G$ is a &lt;strong&gt;cut edge&lt;/strong&gt; if by removing it we obtain a graph with strictly &lt;strong&gt;more&lt;/strong&gt; connected components (cc’s) than G.  &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Removing a cut edge increases the number of connected components by exactly 1. &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; An edge is a cut edge iff it does not belong to any cycle.  &lt;br /&gt;
+&lt;strong&gt;Corollary:&lt;/strong&gt; A connected graph is a tree iff each one of its edges is a cut edge.&lt;/p&gt;
+
+&lt;h2 id=&quot;spanning-trees&quot;&gt;Spanning Trees&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;spanning subgraph&lt;/strong&gt; of the graph $G=(V,E)$ is a subgraph whose vertex set is the entire set $V$. &lt;br /&gt;
+A &lt;strong&gt;spanning tree&lt;/strong&gt; of a &lt;em&gt;connected&lt;/em&gt; graph $G$ is a spanning subgraph of $G$ that is also a tree. &lt;br /&gt;
+A &lt;strong&gt;spanning forest&lt;/strong&gt; of a graph $G$ is a spanning tree for each of the connected components of $G$.&lt;/p&gt;
+&lt;h3 class=&quot;no_toc&quot; id=&quot;spanning-trees-always-exist&quot;&gt;Spanning trees always exist&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Every connected graph has a spanning tree. (Hence every graph has a spanning forest.)&lt;/p&gt;
+&lt;h2 id=&quot;two-algorithms-to-find-spanning-tree&quot;&gt;Two Algorithms to find Spanning Tree&lt;/h2&gt;
+&lt;h3 id=&quot;the-edge-pruning-algorithm&quot;&gt;The edge-pruning algorithm&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Input:&lt;/strong&gt; A connected graph $G=(V,\{e_1,e_2,\ldots,e_m\})$ where $|V|\geq 2$. &lt;br /&gt;
+&lt;strong&gt;Output:&lt;/strong&gt; A spanning tree $T$ of $G$.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Let $T=G$&lt;/li&gt;
+  &lt;li&gt;For $k=1,\ldots,m$ do:
+    &lt;ul&gt;
+      &lt;li&gt;2-1 if $e_k$ is &lt;strong&gt;not&lt;/strong&gt; a cut edge in $T$&lt;/li&gt;
+      &lt;li&gt;2-2 then remove $e_k$ from $T$&lt;/li&gt;
+      &lt;li&gt;2-3 else keep $e_k$ in $T$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;3.Output $T$&lt;/p&gt;
+
+&lt;p&gt;Note that every edge is examined &lt;strong&gt;once&lt;/strong&gt; when a decision to &lt;strong&gt;remove&lt;/strong&gt; or &lt;strong&gt;keep&lt;/strong&gt; the edge is made. And the different orders of edges to examine may result in different spanning trees.&lt;/p&gt;
+&lt;h3 id=&quot;the-edge-growing-algorithm&quot;&gt;The edge-growing algorithm&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Input:&lt;/strong&gt; A connected graph $G=(V,\{e_1,e_2,\ldots,e_m\})$ where $|V|\geq 2$. &lt;br /&gt;
+&lt;strong&gt;Output:&lt;/strong&gt; A spanning tree $T$ of $G$.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Let $T=(V,\emptyset)$ (the edgeless graph on $V$)&lt;/li&gt;
+  &lt;li&gt;For $k=1,\ldots,m$ do:
+    &lt;ul&gt;
+      &lt;li&gt;2-1 if adding $e_k$ to $T$ does &lt;strong&gt;not&lt;/strong&gt; form a cycle with edges already in $T$&lt;/li&gt;
+      &lt;li&gt;2-2 then add $e_k$ to $T$&lt;/li&gt;
+      &lt;li&gt;2-3 else leave $e_k$ out of $T$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;3.Output $T$&lt;/p&gt;
+
+&lt;p&gt;Note that every edge is examined &lt;strong&gt;once&lt;/strong&gt; when a decision to &lt;strong&gt;remove&lt;/strong&gt; or &lt;strong&gt;keep&lt;/strong&gt; the edge is made. And the different orders of edges to examine may result in different spanning trees.&lt;/p&gt;
+
+&lt;h2 id=&quot;graph-coloring&quot;&gt;Graph Coloring&lt;/h2&gt;
+&lt;p&gt;Let $G=(V,E)$ be a graph and let $k$ be a positive integer. A k-&lt;strong&gt;coloring&lt;/strong&gt; of $G$ is a function $f$: $V \rightarrow [1..k]$. &lt;br /&gt;
+A coloring is called &lt;strong&gt;proper&lt;/strong&gt; when for any edge $u\mathrm{-}v$ we have $f(u)\neq f(v)$. &lt;br /&gt;
+A graph that admits a proper $k$-coloring is called k-&lt;strong&gt;colorable&lt;/strong&gt;. Note that $k$-colorable implies $j$-colorable for any $j\geq k$. &lt;br /&gt;
+Clearly, a graph with $n$ vertices is $n$-colorable. &lt;br /&gt;
+The smallest $k$ such that $G$ is $k$-colorable is called the &lt;strong&gt;chromatic number&lt;/strong&gt; of $G$ and is denoted by $\chi(G)$. &lt;br /&gt;
+&lt;strong&gt;Proposition.&lt;/strong&gt; $\chi(G) = 1$ iff $G$ is edgeless.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;the-chromatic-number-of-some-graphs&quot;&gt;The chromatic number of some graphs&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; For $n\geq2$ we have $\chi(P_n) = 2$.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; $\chi(K_n) = n$.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; $\chi(C_n) = 2$ when $n$ is even and $\chi(C_n) = 3$ when $n$ is odd.&lt;/p&gt;
+&lt;h3 id=&quot;bipartite-graphs&quot;&gt;Bipartite Graphs&lt;/h3&gt;
+&lt;p&gt;2-colorable graphs are also called &lt;strong&gt;bipartite&lt;/strong&gt;.    &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt;  A graph is bipartite iff it does not contain a cycle of odd length (any odd cycle).      &lt;br /&gt;
+&lt;strong&gt;Corollary:&lt;/strong&gt; Every path graph is bipartite. A cycle graph is bipartite iff it has an even number of nodes.   &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Every tree is bipartite.  &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Every subgraph of a bipartite graph is also bipartite.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;complete-bipartite-graphs&quot;&gt;Complete Bipartite Graphs&lt;/h4&gt;
+&lt;p&gt;The &lt;strong&gt;complete bipartite graphs&lt;/strong&gt; $K_{m,n}$ has $m$ red nodes, $n$ blue nodes and an edge between every red node and every blue node.    &lt;br /&gt;
+Here is $K_{3,2}$:&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT2/biG.png&quot; alt=&quot;An example bipartite graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;The number of edges in $K_{m,n}$ is $mn$. &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; Every graph $G$ is $(\Delta(G) + 1)$-colorable, where $\Delta(G)$ is the maximum degree of a node in $G$. Moreover, there exist graphs $G$ whose chromatic number, $\chi(G)$, is $\Delta(G) + 1$.&lt;/p&gt;
+&lt;h2 id=&quot;characterization-of-bipartite-graphs&quot;&gt;Characterization of Bipartite Graphs&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; A graph is &lt;strong&gt;bipartite&lt;/strong&gt; iff it contains no cycle of odd length. &lt;br /&gt;
+&lt;strong&gt;Lemma:&lt;/strong&gt; If $S$ is a subgraph of $G$ then $\chi(S)\leq\chi(G)$.&lt;/p&gt;
+
+&lt;h2 id=&quot;distance&quot;&gt;Distance&lt;/h2&gt;
+&lt;p&gt;Let $G=(V,E)$ be a connected graph. The &lt;strong&gt;distance&lt;/strong&gt; between two vertices $u,v \in V$, notation $d(u,v)$, is the length of a shortest path form $u$ to $v$.  &lt;br /&gt;
+When $u=v$ we have $d(u,u)=0$ given by the path of length 0. Moreover, $d(u,v)=d(v,u)$ since the reversal of a path has the same length. &lt;br /&gt;
+&lt;strong&gt;Lemma (The Triangle Inequality):&lt;/strong&gt; $d(u,v)\leq d(u,w)+d(w,v)$.    &lt;br /&gt;
+&lt;strong&gt;Lemma (Locality of shortest paths):&lt;/strong&gt; Consider a shortest path $p$ from $u$ to $v$ and let $x$ and $y$ be two vertices in this path. Then the portion $x\mathrm{-}···\mathrm{-}y$ of $p$ is a shortest path from $x$ to $y$, so $d(x, y) \leq d(u, v)$.&lt;/p&gt;
+
+&lt;h2 id=&quot;cliques-and-independent-sets&quot;&gt;Cliques and Independent Sets&lt;/h2&gt;
+&lt;h3 id=&quot;cliques&quot;&gt;Cliques&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;complete&lt;/strong&gt; subgraph of a graph $G$ is a subgraph that is isomorphic to the complete graph $K_n$ for some $n$. The term &lt;strong&gt;clique&lt;/strong&gt; (of/in $G$) is used both for such a complete subgraph of $G$ and for a subset of the vertices of $G$ that induces a subgraph that is complete.   &lt;br /&gt;
+An alternative definition of clique is a subset of vertices &lt;strong&gt;any two&lt;/strong&gt; of which are &lt;strong&gt;adjacent&lt;/strong&gt;.  &lt;br /&gt;
+The &lt;strong&gt;size&lt;/strong&gt; of a clique is its number of vertices.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT2/cliG.png&quot; alt=&quot;An example Clique&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;In this graph, there are cliques of: &lt;br /&gt;
+size 4: $\{1,2,3,6\}$; size 3: $\{1,2,3\}$, $\{4,5,6\}$, $\{1,3,6\}$, $\{1,2,6\}$, etc.&lt;/p&gt;
+&lt;h3 id=&quot;independent-set&quot;&gt;Independent set&lt;/h3&gt;
+&lt;p&gt;Let $G=(V,E)$ be a graph. A subset of vertices $S\subseteq V$ is called an &lt;strong&gt;independent set&lt;/strong&gt; when no &lt;em&gt;two&lt;/em&gt; vertices in $S$ are adjacent. An alternative definition of independent set is that the induced subgraph is &lt;strong&gt;edgeless&lt;/strong&gt;.  &lt;br /&gt;
+The concepts of clique and of independent set are &lt;strong&gt;dual&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT2/indG.png&quot; alt=&quot;An example Independent Set&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;In this graph, there are independent sets of:    &lt;br /&gt;
+size 4: $\{1,2,4,5\}$; size 3: $\{1,2,4\}$, $\{4,5,2\}$,etc ; size 2: $\{1,6\}$, $\{1,2\}$, etc.    &lt;br /&gt;
+&lt;strong&gt;Proposition:&lt;/strong&gt; A graph is $k$-colorable iff its set of vertices can be partitioned into $k$ independent sets.&lt;/p&gt;
+&lt;h3 id=&quot;complement-of-a-graph&quot;&gt;Complement of a graph&lt;/h3&gt;
+&lt;p&gt;Let $G=(V,E)$ be a graph. The &lt;strong&gt;complement&lt;/strong&gt; of $G$ is the graph $\overline{G} = (V,\overline{E})$ where&lt;/p&gt;
+&lt;center&gt;$\overline{E} = \{\{u,v\}|u,v\in V \wedge u \neq v \wedge \{u,v\}\notin E\}.$&lt;/center&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Let $G=(V,E)$ be a graph and let $S\subseteq V$ be a set of vertices. Then, $S$ is a clique in $G$ iff it is an independent set in $\overline{G}$.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;/2020/11/10/Graph1&quot;&gt;Previous: Graph Theorem 1 - Introduction to Graphs&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;/2020/12/01/Graph3&quot;&gt;Next: Graph Theorem 3 - Directed Graphs&lt;/a&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Quick Guide</summary></entry><entry><title type="html">The Proof of Handshake Lemma’s Corollary by Induction</title><link href="https://yj-guo.github.io/2020/11/11/HSL.html" rel="alternate" type="text/html" title="The Proof of Handshake Lemma’s Corollary by Induction" /><published>2020-11-11T12:04:08-05:00</published><updated>2020-11-11T12:04:08-05:00</updated><id>https://yj-guo.github.io/2020/11/11/HSL</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/11/HSL.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;In this page, two commonly used induction methods are applied to prove &lt;strong&gt;the number of vertices of odd degree is even&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
+
+&lt;ol id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#proof-by-induction-on-edges&quot; id=&quot;markdown-toc-proof-by-induction-on-edges&quot;&gt;Proof by Induction on Edges&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#proof-by-induction-on-vertices&quot; id=&quot;markdown-toc-proof-by-induction-on-vertices&quot;&gt;Proof by Induction on Vertices&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;proof-by-induction-on-edges&quot;&gt;Proof by Induction on Edges&lt;/h2&gt;
+&lt;p&gt;Let $P(m)$ be defined as:   &lt;br /&gt;
+For an arbitrary $m\in\mathbb{N}$, in any graph with $m$ edges, the number of vertices of odd degree is even.  &lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;BASE CASE:&lt;/strong&gt; $P(0)$ holds, because a graph with no edge has only isolated vertices, that is, vertices of degree O. Hence, there are an even number (0) of vertices with odd degree. &lt;br /&gt;
+&lt;br /&gt; 
+&lt;strong&gt;INDUCTION STEP:&lt;/strong&gt; Assume that (IH) $P(k)$ is true, for an arbitrary $k\in\mathbb{N}$.Now, we want to prove $P(k+1)$ is true. &lt;br /&gt;
+Let $G$ be a graph with $k+1$ edges. Remove an arbitrary edge $e=\{u, v\}$ from $G$ (note that it could be any edge), so that we now have a graph $G’$ with $k$ edges. By the Induction Hypothesis, the number of vertices with odd degree in $G’$ is even. Denote the number of vertices with odd degree in
+$G’$ to be $2a$, where $a\in\mathbb{N}$. Now put back the edge $e$ that we removed earlier. Observe that doing so increases the degree of vertices $u$ and $v$ by one each. We consider the following three cases: &lt;br /&gt;
+&lt;em&gt;Case 1:&lt;/em&gt; Both $u$ and $v$ have odd degree in $G’$. Adding e back would make the degree of both $u$ and $v$ even. Hence, the number of vertices with odd degree becomes $2a-2$. &lt;br /&gt;
+&lt;em&gt;Case 2:&lt;/em&gt; Both $u$ and $v$ have even degree in $G’$.Adding $e$ back would make the degree of both $u$ and $v$ odd. Hence, the number of vertices with odd degree becomes $2a+2$.  &lt;br /&gt;
+&lt;em&gt;Case 3:&lt;/em&gt; Exactly one of $u$ and $v$ has odd degree in $G$. Without losing generosity, assume $u$ has an odd degree and $v$ has an even degree in $G$. Adding $e$ back would result in $u$ with an even degree and $u$ with an odd degree. Hence, the number of vertices with odd degree would stay unchanged ($2a$).   &lt;br /&gt;
+In all cases, the number of odd degree vertices in $G$ is even. Thus, we have shown our claim is true when $m=k+1$, concluding the Induction Step and completing the proof.&lt;/p&gt;
+
+&lt;h2 id=&quot;proof-by-induction-on-vertices&quot;&gt;Proof by Induction on Vertices&lt;/h2&gt;
+&lt;p&gt;Let $P(n)$ be defined as:  &lt;br /&gt;
+For an arbitrary $n\in\mathbb{Z^+}$, in any graph with $n$ vertices, the number of vertices of odd degree is even.  &lt;br /&gt;
+&lt;br /&gt; 
+&lt;strong&gt;BASE CASE:&lt;/strong&gt; $P(1)$ holds, because a graph with 1 vertex is an edgeless graph, that is, the graph contains one vertex of degree O. Hence, there are an even number (0) of vertices with odd degree.  &lt;br /&gt;
+&lt;br /&gt; 
+&lt;strong&gt;INDUCTION STEP:&lt;/strong&gt; Assume that (IH) $P(k)$ is true, for an arbitrary $k\in\mathbb{Z^+}$. Now, we want to prove $P(k+1)$ is true.  &lt;br /&gt;
+Let $G=(V, E)$ be a graph with $k+ 1$ vertices. Let $v\in V$ be arbitrary. We partition $V$ into the following sets:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$X$ = the neighbors of $u$ with even degree in $G$.&lt;/li&gt;
+  &lt;li&gt;$Y$ = the neighbors of $u$ with odd degree in $G$.&lt;/li&gt;
+  &lt;li&gt;$R$ = vertices not adjacent to $u$ with even degree in $G$.&lt;/li&gt;
+  &lt;li&gt;$S$ = vertices not adjacent to $u$ with odd degree in $G$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since $Y$ and $S$ partition the set of odd-degree vertices in $G$, want to show $|Y|$+$|S|$ is even.   &lt;br /&gt;
+Remove $v$ with degree $\alpha$ from $G$, so that we now have a graph $G’$ with $k$ vertices.  &lt;br /&gt;
+&lt;em&gt;Case 1:&lt;/em&gt; $\alpha$ is even. Then $\alpha=2k$, $k\in\mathbb{N}$. This means that $|X|+|Y|=2k$, so $|X|$ and $|Y|$ have the same parity.  &lt;br /&gt;
+The degree of each neighbor of $v$ decreased by 1, so all $x\in X$ in $G$ became odd degree vertices in $G’$. By the Induction Hypothesis, the number of vertices with odd degree in $G’$ is even. Denote the number of vertices with odd degree in $G’$ to be $2\alpha$, where $\alpha \in \mathbb{N}$. In $G’$ this gives $|X|+|S|=2a$, since $|X|$ represents the odd-degree vertices
+unaffected by the removal of $v$. Note that $|X|$ and $|S|$ must have the same parity.  &lt;br /&gt;
+Now put back the vertex $v$ that we removed earlier. Observe that doing so increases the degree of each of the neighbors of $v$ by 1. All vertices in $X$ now have even degree, and all vertices in $Y$ have odd degree again.
+Since $|X|$ and $|S|$ have the same parity, and we already know $|X|$ and $|Y|$ have the same parity, then$|X|$, $|Y|$, $|S|$ all have the same parity. This means $|Y|+|S|$ is even. &lt;br /&gt;
+&lt;em&gt;Case 2:&lt;/em&gt; $\alpha$ is odd. (We include $v$ in $S$). Then $\alpha=2k+1$, $k\in\mathbb{N}$. This means that $|X|+|Y|=2k+1$, so $|X|$ and $|Y|$ have opposite parity.    &lt;br /&gt;
+The degree of each neighbor of $v$ decreased by 1, so all $x\in X$ in $G$ became odd degree vertices in $G’$. By the Induction Hypothesis, the number of vertices with odd degree in $G’$ is even. Denote the number of vertices with odd degree in $G’$ to be $2\alpha$, where $\alpha\in\mathbb{N}$. In $G’$ this gives$|X|+|S|=2\alpha$, since $|X|$ now represents the new odd vertices in $G$, and $S’=S\backslash\{v\}$ since $v$ had odd degree, removing it means $|S’| =|S|-1$ since all other vertices in $S$ are unaffected. Note that$|X|+|S’|=2\alpha$, or $|X|+|S|=2\alpha+1$. This means $|X|$ and $|S|$ have opposite parity.     &lt;br /&gt;
+Now put back the vertex $v$ that we removed earlier. Observe that doing so increases the degree of each of the neighbors of $v$ by 1. All vertices in $X$ now have even degree, and all vertices in $Y$ have odd degree again.  &lt;br /&gt;
+Since $|X|$ and $|S|$ must have the opposite party, and $|X|$ and $|Y|$ have opposite parity, we have that $|Y|$ and $|S|$ have the same parity. This means $|Y|+|S|$ is even.    &lt;br /&gt;
+In all cases, the number of odd degree vertices in $G$ is even. Thus, we have shown the claim is true when $m=k+1$, concluding the Induction Step and completing the proof.
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;footnotes&quot;&gt;FOOTNOTES&lt;/h4&gt;
+&lt;p&gt;All the contents are based on the course materials provided by &lt;a href=&quot;https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index&quot;&gt;Dr. Clayton Greenberg&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">In this page, two commonly used induction methods are applied to prove the number of vertices of odd degree is even.</summary></entry><entry><title type="html">Graph Theorem 1 - Introduction to Graphs</title><link href="https://yj-guo.github.io/2020/11/10/Graph1.html" rel="alternate" type="text/html" title="Graph Theorem 1 - Introduction to Graphs" /><published>2020-11-10T17:17:30-05:00</published><updated>2020-11-10T17:17:30-05:00</updated><id>https://yj-guo.github.io/2020/11/10/Graph1</id><content type="html" xml:base="https://yj-guo.github.io/2020/11/10/Graph1.html">&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg&quot; alt=&quot;A Graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
 &lt;h2 class=&quot;no_toc&quot; id=&quot;quick-guide&quot;&gt;Quick Guide&lt;/h2&gt;
 
 &lt;ol id=&quot;markdown-toc&quot;&gt;
@@ -8,6 +371,9 @@
   &lt;li&gt;&lt;a href=&quot;#walks-and-paths&quot; id=&quot;markdown-toc-walks-and-paths&quot;&gt;Walks and Paths&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#connected-components&quot; id=&quot;markdown-toc-connected-components&quot;&gt;Connected Components&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#counting-connected-components&quot; id=&quot;markdown-toc-counting-connected-components&quot;&gt;Counting Connected Components&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#graph-isomorphism&quot; id=&quot;markdown-toc-graph-isomorphism&quot;&gt;Graph isomorphism&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#subgraph&quot; id=&quot;markdown-toc-subgraph&quot;&gt;Subgraph&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cycles&quot; id=&quot;markdown-toc-cycles&quot;&gt;Cycles&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;graph-terminology-and-notation&quot;&gt;Graph Terminology and Notation&lt;/h2&gt;
@@ -30,7 +396,8 @@ A vertex of degree 0 is called &lt;strong&gt;isolated&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;the-handshaking-lemma&quot;&gt;The Handshaking Lemma&lt;/h2&gt;
 &lt;p&gt;The sum of the degrees of all nodes in a graph is &lt;strong&gt;twice&lt;/strong&gt; the number of edges, that is&lt;/p&gt;
 &lt;center&gt;$\sum_{v\in V} deg(v) = 2 |E|$&lt;/center&gt;
-&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; In any graph there are an even number of vertices of odd degree.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Corollary:&lt;/strong&gt; In any graph there are an even number of vertices of odd degree. &lt;br /&gt;
+The proof of this corollary can be found at &lt;a href=&quot;/2020/11/11/HSL&quot;&gt;The Proof of Handshake Lemma’s Corollary by Induction&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;special-graphs&quot;&gt;Special Graphs&lt;/h2&gt;
 &lt;h4 class=&quot;no_toc&quot; id=&quot;edgeless-graphs&quot;&gt;Edgeless graphs&lt;/h4&gt;
@@ -42,7 +409,8 @@ Therefore, $K_n = (V,E)$ where $|V| = n$ and $|E| = \{\{u,v\}|u,v\in V\}.$&lt;/p
 &lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/completeG.png&quot; alt=&quot;Complete graphs&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
 &lt;p&gt;The number of edges in $k_n$ is the number of unordered pairs $\binom{n}{2} = \frac{n(n-1)}{2}$.&lt;/p&gt;
 &lt;h4 class=&quot;no_toc&quot; id=&quot;path-graphs&quot;&gt;Path graphs&lt;/h4&gt;
-&lt;p&gt;A &lt;strong&gt;path&lt;/strong&gt; graph on $n\geq 1$ vertices, notation $P_n$, has $n$ vertices and $n-1$ edges arranged “in a row”.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;path&lt;/strong&gt; graph on $n\geq 1$ vertices, notation $P_n$, has $n$ vertices and $n-1$ edges arranged “in a row”.
+A &lt;strong&gt;path graph on&lt;/strong&gt; $n$ &lt;strong&gt;vertices&lt;/strong&gt; is a graph &lt;a href=&quot;#graph-isomorphism&quot;&gt;isomorphic&lt;/a&gt; to $P_n$. Hence, a path graph of length $l$ is a graph isomorphic to $P_{l+1}.$&lt;/p&gt;
 &lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/pathG.png&quot; alt=&quot;Path graphs&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
 &lt;p&gt;Note that for $n\geq3$ we have two vertices of degree 1 in $P_n$ and the rest have degree 2.&lt;/p&gt;
 &lt;h4 class=&quot;no_toc&quot; id=&quot;cycle-graphs&quot;&gt;Cycle graphs&lt;/h4&gt;
@@ -100,8 +468,33 @@ The $m\times n$ grid graphs are connected.&lt;/p&gt;
 &lt;strong&gt;Proposition:&lt;/strong&gt; In any graph $G = (V,E)$ we have $|E|\geq|V|-|CC|$. &lt;br /&gt;
 &lt;strong&gt;Proposition:&lt;/strong&gt; $|E| \leq \binom{|V|}{2}$. &lt;br /&gt;
 &lt;strong&gt;Corollary:&lt;/strong&gt; Every connected graph with $n$ vertices has $n-1$ or more edges.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
+&lt;h2 id=&quot;graph-isomorphism&quot;&gt;Graph isomorphism&lt;/h2&gt;
+&lt;p&gt;Two graphs $G_1 = (V_1,E_1)$ and $G_2 = (V_2,E_2)$ are &lt;strong&gt;isomorphic&lt;/strong&gt;, notation $G_1\simeq G_2$, when there is a &lt;strong&gt;bijection&lt;/strong&gt; $\beta : V_1 \rightarrow V_2$ such that for any $u_1,v_1 \in V_1$ we have $u_1 \mathrm{-}v_1 \in E_1$ &lt;strong&gt;iff&lt;/strong&gt; $\beta(u_1)\mathrm{-}\beta(v_1)\in E_2$.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/isoG.png&quot; alt=&quot;Example isomorphic graph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;$G_1\simeq G_2$ by the bijection $4\mapsto 5, 2\mapsto 6, 1\mapsto 7, 3\mapsto 8$ &lt;br /&gt;
+&lt;strong&gt;proposition:&lt;/strong&gt; Any two complete graphs are isomorphic iff they have the same number of vertices. The same holds for path, cycle, and edgeless graphs. &lt;br /&gt;
+Any two $m\times n$ grids are isomorphic, as well as isomorphic to any $n\times m$ grids.&lt;/p&gt;
+&lt;h2 id=&quot;subgraph&quot;&gt;Subgraph&lt;/h2&gt;
+&lt;p&gt;A graph $G_1 = (V_1,E_1)$ is a &lt;strong&gt;subgraph&lt;/strong&gt; of the graph $G_2 = (V_2,E_2)$ when $V_1 \subseteq V_2$ and $E_1 \subseteq E_2$.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/subG.png&quot; alt=&quot;Subgraph Example&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;Here, $G_1$ is a subgraph of $G_2$.&lt;/p&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;induced-subgraphs&quot;&gt;Induced subgraphs&lt;/h4&gt;
+&lt;p&gt;If $G = (V,E)$ is a graph and $V’ \subseteq V$ is a set consisting of some of $G$’s nodes, the subgraph of $G$ &lt;strong&gt;induced&lt;/strong&gt; by $V’$ is the graph $G’=(V’,E’)$ where $E’$ consists of all the edges of $G$ whose endpoints are both in $V’$.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/induceG.png&quot; alt=&quot;Induced Subgraph&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;$G’$ is the subgraph of $G$ &lt;strong&gt;induced&lt;/strong&gt; by the subset of vertices $\{1,2,3\}$. &lt;br /&gt;
+The subgraph of $G$ induced by $\{2, 3, 4\}$ is path graph of length 2. &lt;br /&gt;
+The subgraph of $G$ induced by $\{1, 3, 4\}$ is disconnected.&lt;/p&gt;
+&lt;h2 id=&quot;cycles&quot;&gt;Cycles&lt;/h2&gt;
+&lt;h4 class=&quot;no_toc&quot; id=&quot;closed-walks-and-cycles&quot;&gt;Closed Walks and Cycles&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;closed walk&lt;/strong&gt; is a walk in which the first and the last vertex are the same. &lt;br /&gt;
+A &lt;strong&gt;cycle&lt;/strong&gt; is a closed walk of &lt;strong&gt;length at least 3&lt;/strong&gt; in which all nodes are pairwise distinct, except for the last and the first. &lt;br /&gt;
+The &lt;strong&gt;length&lt;/strong&gt; of the cycle is the length of the closed walk. &lt;br /&gt;
+When we count the &lt;strong&gt;cycles of length&lt;/strong&gt; $n$ in a graph $G$, we count in facet the subgraphs of $G$ that are cycle graphs on $n$ vertices.&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;https://yj-guo.github.io/assets/img/content/GT1/cycG.png&quot; alt=&quot;Counting Cycles&quot; class=&quot;post-pic&quot; /&gt;&lt;/center&gt;
+&lt;p&gt;In graph $G$, $1\mathrm{-}2\mathrm{-}3\mathrm{-}4\mathrm{-}2\mathrm{-}1$ is a closed walk but not a cycle. $2\mathrm{-}3\mathrm{-}4\mathrm{-}2$ is a cycle of length 3.
+&lt;br /&gt;
+&lt;a href=&quot;/2020/11/03/Graph0&quot;&gt;Previous: Graph Theorem 0 - Proof Patterns&lt;/a&gt; &lt;br /&gt;
+&lt;a href=&quot;/2020/11/18/Graph2&quot;&gt;Next: Graph Theorem 2 - Trees&lt;/a&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;

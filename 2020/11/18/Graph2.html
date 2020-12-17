@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Guo's Blog | Graph Theorem 2 - Trees</title>
+  <meta name="title" content="Guo's Blog | Graph Theorem 2 - Trees"/>
+  <meta name="description" content="The introduction to trees and forest."/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="Guo's Blog | Graph Theorem 2 - Trees"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://YJ-Guo.github.io/2020/11/18/Graph2"/>
+  <meta property="og:title" content="Guo's Blog | Graph Theorem 2 - Trees"/>
+  <meta property="og:description" content="The introduction to trees and forest."/>
+  <meta property="og:image" content="https://YJ-Guo.github.io"/>
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:url" content="https://YJ-Guo.github.io/2020/11/18/Graph2"/>
+  <meta property="twitter:title" content="Guo's Blog | Graph Theorem 2 - Trees"/>
+  <meta property="twitter:description" content="The introduction to trees and forest."/>
+  <meta property="twitter:image" content="https://YJ-Guo.github.io"/>
+  
+
+  <link rel="stylesheet" href="https://yj-guo.github.io/assets/css/main.css"/>
+  <link rel="canonical" href="https://YJ-Guo.github.io/2020/11/18/Graph2"/>
+  <link rel="shortcut icon" href="https://yj-guo.github.io/favicon.ico" type="image/x-icon"/>
+
+  <!-- Google Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', "", "auto");
+    ga('send', "pageview");
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+ <!-- Mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']]
+        }
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="https://YJ-Guo.github.io/">
+      <img src="https://yj-guo.github.io/assets/img/title.png" alt="Guo's Blog" />
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon"></a>
+
+      <div class="menu">
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/">
+            Home
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/note">
+            Note
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/code">
+            Code
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/love">
+            Love
+          </a>
+        
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+          <header class="post-header">
+
+            
+
+            <h1 class="post-title">
+            
+              Graph Theorem 2 - Trees
+            
+            </h1>
+
+            
+            <p class="post-meta"><span class="post-date">November 18, 2020
+            </span></p>
+          </header>
+
+          <article class="post-content">
+            <center><img src="https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg" alt="A Graph" class="post-pic" /></center>
+<h2 class="no_toc" id="quick-guide">Quick Guide</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#acyclic-graphs-and-trees" id="markdown-toc-acyclic-graphs-and-trees">Acyclic Graphs and Trees</a></li>
+  <li><a href="#leaf" id="markdown-toc-leaf">Leaf</a></li>
+  <li><a href="#property-of-tree" id="markdown-toc-property-of-tree">Property of Tree</a>    <ol>
+      <li><a href="#every-tree-is-minimally-connected" id="markdown-toc-every-tree-is-minimally-connected">Every Tree is minimally connected</a></li>
+      <li><a href="#every-tree-is-maximally-acyclic" id="markdown-toc-every-tree-is-maximally-acyclic">Every Tree is maximally acyclic</a></li>
+      <li><a href="#every-tree-is-unique-path-connected" id="markdown-toc-every-tree-is-unique-path-connected">Every Tree is unique-path connected</a></li>
+      <li><a href="#unique-path-connectivity" id="markdown-toc-unique-path-connectivity">Unique path connectivity</a></li>
+    </ol>
+  </li>
+  <li><a href="#cut-edge" id="markdown-toc-cut-edge">Cut Edge</a></li>
+  <li><a href="#spanning-trees" id="markdown-toc-spanning-trees">Spanning Trees</a></li>
+  <li><a href="#two-algorithms-to-find-spanning-tree" id="markdown-toc-two-algorithms-to-find-spanning-tree">Two Algorithms to find Spanning Tree</a>    <ol>
+      <li><a href="#the-edge-pruning-algorithm" id="markdown-toc-the-edge-pruning-algorithm">The edge-pruning algorithm</a></li>
+      <li><a href="#the-edge-growing-algorithm" id="markdown-toc-the-edge-growing-algorithm">The edge-growing algorithm</a></li>
+    </ol>
+  </li>
+  <li><a href="#graph-coloring" id="markdown-toc-graph-coloring">Graph Coloring</a>    <ol>
+      <li><a href="#bipartite-graphs" id="markdown-toc-bipartite-graphs">Bipartite Graphs</a></li>
+    </ol>
+  </li>
+  <li><a href="#characterization-of-bipartite-graphs" id="markdown-toc-characterization-of-bipartite-graphs">Characterization of Bipartite Graphs</a></li>
+  <li><a href="#distance" id="markdown-toc-distance">Distance</a></li>
+  <li><a href="#cliques-and-independent-sets" id="markdown-toc-cliques-and-independent-sets">Cliques and Independent Sets</a>    <ol>
+      <li><a href="#cliques" id="markdown-toc-cliques">Cliques</a></li>
+      <li><a href="#independent-set" id="markdown-toc-independent-set">Independent set</a></li>
+      <li><a href="#complement-of-a-graph" id="markdown-toc-complement-of-a-graph">Complement of a graph</a></li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="acyclic-graphs-and-trees">Acyclic Graphs and Trees</h2>
+<p>A graph in which there are no cycles is called <strong>acyclic</strong>. The cc’s of an acyclic graph are also acyclic. <br />
+A graph that is both <strong>connected</strong> and <strong>acyclic</strong> is called a <strong>tree</strong>. <br />
+Consequently, an acyclic graph is also called a <strong>forest</strong> since all its cc’s are trees. <br />
+<strong>Proposition:</strong> Let $G_1$ and $G_2$ be two <strong>isomorphic</strong> graphs, $G_1 \simeq G_2$. Then:</p>
+<ul>
+  <li>$G_1$ is acyclic iff $G_2$ is acyclic.</li>
+  <li>$G_1$ is connected iff $G_2$ is connected.</li>
+  <li>$G_1$ is a tree iff $G_2$ is a tree.</li>
+</ul>
+
+<h4 class="no_toc" id="number-of-edges-in-a-treeforest">Number of edges in a tree/forest</h4>
+<p><strong>Proposition:</strong> A tree has one more vertex than edges. That is, if $G = (V,E)$ is a tree then $|E| = |V| - 1$. <br />
+<strong>Corollary:</strong> If $G = (V,E)$ is a forest then $|E| = |V| - |CC|$ where $|CC|$ is the set of cc’s of $G$. <br />
+<strong>Proposition:</strong> Any tree with $n$ vertices has $n-1$ edges.</p>
+<h2 id="leaf">Leaf</h2>
+<p>In a graph a <strong>leaf</strong> is a node of degree 1.    <br />
+<strong>Lemma:</strong> Every tree with edges has at least one leaf.  <br />
+<strong>Lemma:</strong> Removing a leaf from a tree with edges leaves again a tree.</p>
+<h2 id="property-of-tree">Property of Tree</h2>
+<h3 id="every-tree-is-minimally-connected">Every Tree is minimally connected</h3>
+<p><strong>Proposition:</strong> Removing <strong>any</strong> edge in a tree disconnects it.</p>
+<h3 id="every-tree-is-maximally-acyclic">Every Tree is maximally acyclic</h3>
+<p><strong>Proposition:</strong> Adding an edge between <strong>any</strong> two non-adjacent vertices in a tree creates a cycle.</p>
+<h3 id="every-tree-is-unique-path-connected">Every Tree is unique-path connected</h3>
+<p><strong>Proposition:</strong> Any two distinct vertices of a tree are connected by a <strong>unique</strong> path.</p>
+<h3 id="unique-path-connectivity">Unique path connectivity</h3>
+<p><strong>Proposition:</strong> A graph such that any two distinct vertices are connected by a unique path must be a tree. <br />
+<br />
+<strong>Lemma:</strong> Adding an edge to an acyclic graph creates <strong>at most</strong> one cycle. <br />
+<strong>Lemma:</strong> Any closed walk of non-zero length that traverses at least one of its edges <strong>exactly once</strong> contains a <strong>cycle</strong>.</p>
+
+<h2 id="cut-edge">Cut Edge</h2>
+<p>Let $G=(V,E)$ be a graph. An edge of $G$ is a <strong>cut edge</strong> if by removing it we obtain a graph with strictly <strong>more</strong> connected components (cc’s) than G.  <br />
+<strong>Proposition:</strong> Removing a cut edge increases the number of connected components by exactly 1. <br />
+<strong>Proposition:</strong> An edge is a cut edge iff it does not belong to any cycle.  <br />
+<strong>Corollary:</strong> A connected graph is a tree iff each one of its edges is a cut edge.</p>
+
+<h2 id="spanning-trees">Spanning Trees</h2>
+<p>A <strong>spanning subgraph</strong> of the graph $G=(V,E)$ is a subgraph whose vertex set is the entire set $V$. <br />
+A <strong>spanning tree</strong> of a <em>connected</em> graph $G$ is a spanning subgraph of $G$ that is also a tree. <br />
+A <strong>spanning forest</strong> of a graph $G$ is a spanning tree for each of the connected components of $G$.</p>
+<h3 class="no_toc" id="spanning-trees-always-exist">Spanning trees always exist</h3>
+<p><strong>Proposition:</strong> Every connected graph has a spanning tree. (Hence every graph has a spanning forest.)</p>
+<h2 id="two-algorithms-to-find-spanning-tree">Two Algorithms to find Spanning Tree</h2>
+<h3 id="the-edge-pruning-algorithm">The edge-pruning algorithm</h3>
+<p><strong>Input:</strong> A connected graph $G=(V,\{e_1,e_2,\ldots,e_m\})$ where $|V|\geq 2$. <br />
+<strong>Output:</strong> A spanning tree $T$ of $G$.</p>
+<ol>
+  <li>Let $T=G$</li>
+  <li>For $k=1,\ldots,m$ do:
+    <ul>
+      <li>2-1 if $e_k$ is <strong>not</strong> a cut edge in $T$</li>
+      <li>2-2 then remove $e_k$ from $T$</li>
+      <li>2-3 else keep $e_k$ in $T$</li>
+    </ul>
+  </li>
+</ol>
+
+<p>3.Output $T$</p>
+
+<p>Note that every edge is examined <strong>once</strong> when a decision to <strong>remove</strong> or <strong>keep</strong> the edge is made. And the different orders of edges to examine may result in different spanning trees.</p>
+<h3 id="the-edge-growing-algorithm">The edge-growing algorithm</h3>
+<p><strong>Input:</strong> A connected graph $G=(V,\{e_1,e_2,\ldots,e_m\})$ where $|V|\geq 2$. <br />
+<strong>Output:</strong> A spanning tree $T$ of $G$.</p>
+<ol>
+  <li>Let $T=(V,\emptyset)$ (the edgeless graph on $V$)</li>
+  <li>For $k=1,\ldots,m$ do:
+    <ul>
+      <li>2-1 if adding $e_k$ to $T$ does <strong>not</strong> form a cycle with edges already in $T$</li>
+      <li>2-2 then add $e_k$ to $T$</li>
+      <li>2-3 else leave $e_k$ out of $T$</li>
+    </ul>
+  </li>
+</ol>
+
+<p>3.Output $T$</p>
+
+<p>Note that every edge is examined <strong>once</strong> when a decision to <strong>remove</strong> or <strong>keep</strong> the edge is made. And the different orders of edges to examine may result in different spanning trees.</p>
+
+<h2 id="graph-coloring">Graph Coloring</h2>
+<p>Let $G=(V,E)$ be a graph and let $k$ be a positive integer. A k-<strong>coloring</strong> of $G$ is a function $f$: $V \rightarrow [1..k]$. <br />
+A coloring is called <strong>proper</strong> when for any edge $u\mathrm{-}v$ we have $f(u)\neq f(v)$. <br />
+A graph that admits a proper $k$-coloring is called k-<strong>colorable</strong>. Note that $k$-colorable implies $j$-colorable for any $j\geq k$. <br />
+Clearly, a graph with $n$ vertices is $n$-colorable. <br />
+The smallest $k$ such that $G$ is $k$-colorable is called the <strong>chromatic number</strong> of $G$ and is denoted by $\chi(G)$. <br />
+<strong>Proposition.</strong> $\chi(G) = 1$ iff $G$ is edgeless.</p>
+<h4 class="no_toc" id="the-chromatic-number-of-some-graphs">The chromatic number of some graphs</h4>
+<p><strong>Proposition:</strong> For $n\geq2$ we have $\chi(P_n) = 2$.   <br />
+<strong>Proposition:</strong> $\chi(K_n) = n$.   <br />
+<strong>Proposition:</strong> $\chi(C_n) = 2$ when $n$ is even and $\chi(C_n) = 3$ when $n$ is odd.</p>
+<h3 id="bipartite-graphs">Bipartite Graphs</h3>
+<p>2-colorable graphs are also called <strong>bipartite</strong>.    <br />
+<strong>Proposition:</strong>  A graph is bipartite iff it does not contain a cycle of odd length (any odd cycle).      <br />
+<strong>Corollary:</strong> Every path graph is bipartite. A cycle graph is bipartite iff it has an even number of nodes.   <br />
+<strong>Proposition:</strong> Every tree is bipartite.  <br />
+<strong>Proposition:</strong> Every subgraph of a bipartite graph is also bipartite.</p>
+<h4 class="no_toc" id="complete-bipartite-graphs">Complete Bipartite Graphs</h4>
+<p>The <strong>complete bipartite graphs</strong> $K_{m,n}$ has $m$ red nodes, $n$ blue nodes and an edge between every red node and every blue node.    <br />
+Here is $K_{3,2}$:</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT2/biG.png" alt="An example bipartite graph" class="post-pic" /></center>
+<p>The number of edges in $K_{m,n}$ is $mn$. <br />
+<strong>Proposition:</strong> Every graph $G$ is $(\Delta(G) + 1)$-colorable, where $\Delta(G)$ is the maximum degree of a node in $G$. Moreover, there exist graphs $G$ whose chromatic number, $\chi(G)$, is $\Delta(G) + 1$.</p>
+<h2 id="characterization-of-bipartite-graphs">Characterization of Bipartite Graphs</h2>
+<p><strong>Proposition:</strong> A graph is <strong>bipartite</strong> iff it contains no cycle of odd length. <br />
+<strong>Lemma:</strong> If $S$ is a subgraph of $G$ then $\chi(S)\leq\chi(G)$.</p>
+
+<h2 id="distance">Distance</h2>
+<p>Let $G=(V,E)$ be a connected graph. The <strong>distance</strong> between two vertices $u,v \in V$, notation $d(u,v)$, is the length of a shortest path form $u$ to $v$.  <br />
+When $u=v$ we have $d(u,u)=0$ given by the path of length 0. Moreover, $d(u,v)=d(v,u)$ since the reversal of a path has the same length. <br />
+<strong>Lemma (The Triangle Inequality):</strong> $d(u,v)\leq d(u,w)+d(w,v)$.    <br />
+<strong>Lemma (Locality of shortest paths):</strong> Consider a shortest path $p$ from $u$ to $v$ and let $x$ and $y$ be two vertices in this path. Then the portion $x\mathrm{-}···\mathrm{-}y$ of $p$ is a shortest path from $x$ to $y$, so $d(x, y) \leq d(u, v)$.</p>
+
+<h2 id="cliques-and-independent-sets">Cliques and Independent Sets</h2>
+<h3 id="cliques">Cliques</h3>
+<p>A <strong>complete</strong> subgraph of a graph $G$ is a subgraph that is isomorphic to the complete graph $K_n$ for some $n$. The term <strong>clique</strong> (of/in $G$) is used both for such a complete subgraph of $G$ and for a subset of the vertices of $G$ that induces a subgraph that is complete.   <br />
+An alternative definition of clique is a subset of vertices <strong>any two</strong> of which are <strong>adjacent</strong>.  <br />
+The <strong>size</strong> of a clique is its number of vertices.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT2/cliG.png" alt="An example Clique" class="post-pic" /></center>
+<p>In this graph, there are cliques of: <br />
+size 4: $\{1,2,3,6\}$; size 3: $\{1,2,3\}$, $\{4,5,6\}$, $\{1,3,6\}$, $\{1,2,6\}$, etc.</p>
+<h3 id="independent-set">Independent set</h3>
+<p>Let $G=(V,E)$ be a graph. A subset of vertices $S\subseteq V$ is called an <strong>independent set</strong> when no <em>two</em> vertices in $S$ are adjacent. An alternative definition of independent set is that the induced subgraph is <strong>edgeless</strong>.  <br />
+The concepts of clique and of independent set are <strong>dual</strong>.</p>
+
+<center><img src="https://yj-guo.github.io/assets/img/content/GT2/indG.png" alt="An example Independent Set" class="post-pic" /></center>
+<p>In this graph, there are independent sets of:    <br />
+size 4: $\{1,2,4,5\}$; size 3: $\{1,2,4\}$, $\{4,5,2\}$,etc ; size 2: $\{1,6\}$, $\{1,2\}$, etc.    <br />
+<strong>Proposition:</strong> A graph is $k$-colorable iff its set of vertices can be partitioned into $k$ independent sets.</p>
+<h3 id="complement-of-a-graph">Complement of a graph</h3>
+<p>Let $G=(V,E)$ be a graph. The <strong>complement</strong> of $G$ is the graph $\overline{G} = (V,\overline{E})$ where</p>
+<center>$\overline{E} = \{\{u,v\}|u,v\in V \wedge u \neq v \wedge \{u,v\}\notin E\}.$</center>
+<p><strong>Proposition:</strong> Let $G=(V,E)$ be a graph and let $S\subseteq V$ be a set of vertices. Then, $S$ is a clique in $G$ iff it is an independent set in $\overline{G}$.</p>
+
+<p><br />
+<a href="/2020/11/10/Graph1">Previous: Graph Theorem 1 - Introduction to Graphs</a> <br />
+<a href="/2020/12/01/Graph3">Next: Graph Theorem 3 - Directed Graphs</a>
+<br /></p>
+
+<hr />
+<h4 class="no_toc" id="footnotes">FOOTNOTES</h4>
+<p>All the contents are based on the course materials provided by <a href="https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index">Dr. Clayton Greenberg</a>.</p>
+
+
+          </article>
+
+          
+
+      </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1 social-links">
+        <h4>CONTACT</h4>
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/email.png"
+            alt="email"
+          />
+          <a href="mailto:gyingjie@seas.upenn.edu" id="email-link">
+            
+              gyingjie[aT]seas.upenn.edu
+            
+          </a>
+          <br />
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/wechat.png"
+            alt="wechat"
+          />
+          <a href="#" id="wechat-link">
+            
+              gorser666
+            
+          </a>
+          <br />
+
+        
+      </div>
+
+      <div class="footer-col footer-col-2 social-links">
+        <h4>FOLLOW</h4>
+
+        
+          <span class="wrap-link">
+
+            
+            <img
+              src="https://yj-guo.github.io/assets/img/icons/github.png"
+              alt="github"
+            />
+            <a href="http://github.com/YJ-Guo">
+              
+                GitHub
+              
+            </a>
+          </span>
+
+           
+
+        
+      </div>
+
+      
+        <div class="footer-col footer-col-3 powered-by">
+          <p>
+            Go to <a href="/note"> Note</a> |
+            Go to <a href="/code"> Code</a> |
+            Go to <a href="/love"> Love</a>
+            <br>
+            powered by <a href="https://jekyllrb.com/">Jekyll</a> | Theme <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
+          </p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+  
+
+  
+    
+    
+
+
+  <div id="wechat-widget">
+    <p>
+      Find me on WeChat with the ID <strong>gorser666</strong>, or scan my QR code:
+    </p>
+
+    <img src="https://yj-guo.github.io/assets/img/wechat-qr-code.jpg" alt="QR code" id="qr-code" />
+  </div>
+
+
+
+
+    <script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/retina-1.3.0.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/cash-4.1.5.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/site.js"></script>
+
+  </body>
+</html>

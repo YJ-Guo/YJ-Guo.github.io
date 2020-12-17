@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Guo's Blog | Graph Theorem 3 - Directed Graphs</title>
+  <meta name="title" content="Guo's Blog | Graph Theorem 3 - Directed Graphs"/>
+  <meta name="description" content="The introduction to directed graphs."/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="Guo's Blog | Graph Theorem 3 - Directed Graphs"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://YJ-Guo.github.io/2020/12/01/Graph3"/>
+  <meta property="og:title" content="Guo's Blog | Graph Theorem 3 - Directed Graphs"/>
+  <meta property="og:description" content="The introduction to directed graphs."/>
+  <meta property="og:image" content="https://YJ-Guo.github.io"/>
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:url" content="https://YJ-Guo.github.io/2020/12/01/Graph3"/>
+  <meta property="twitter:title" content="Guo's Blog | Graph Theorem 3 - Directed Graphs"/>
+  <meta property="twitter:description" content="The introduction to directed graphs."/>
+  <meta property="twitter:image" content="https://YJ-Guo.github.io"/>
+  
+
+  <link rel="stylesheet" href="https://yj-guo.github.io/assets/css/main.css"/>
+  <link rel="canonical" href="https://YJ-Guo.github.io/2020/12/01/Graph3"/>
+  <link rel="shortcut icon" href="https://yj-guo.github.io/favicon.ico" type="image/x-icon"/>
+
+  <!-- Google Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', "", "auto");
+    ga('send', "pageview");
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+ <!-- Mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']]
+        }
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="https://YJ-Guo.github.io/">
+      <img src="https://yj-guo.github.io/assets/img/title.png" alt="Guo's Blog" />
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon"></a>
+
+      <div class="menu">
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/">
+            Home
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/note">
+            Note
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/code">
+            Code
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/love">
+            Love
+          </a>
+        
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+          <header class="post-header">
+
+            
+
+            <h1 class="post-title">
+            
+              Graph Theorem 3 - Directed Graphs
+            
+            </h1>
+
+            
+            <p class="post-meta"><span class="post-date">December 1, 2020
+            </span></p>
+          </header>
+
+          <article class="post-content">
+            <center><img src="https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg" alt="A Graph" class="post-pic" /></center>
+<h2 class="no_toc" id="quick-guide">Quick Guide</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#directed-graph" id="markdown-toc-directed-graph">Directed Graph</a></li>
+  <li><a href="#digraph-terminology" id="markdown-toc-digraph-terminology">Digraph Terminology</a></li>
+  <li><a href="#reachability" id="markdown-toc-reachability">Reachability</a></li>
+  <li><a href="#strong-connectivity" id="markdown-toc-strong-connectivity">Strong Connectivity</a></li>
+  <li><a href="#directed-acyclic-graph-dags" id="markdown-toc-directed-acyclic-graph-dags">Directed Acyclic Graph (DAGs)</a>    <ol>
+      <li><a href="#topological-sort" id="markdown-toc-topological-sort">Topological Sort</a></li>
+    </ol>
+  </li>
+  <li><a href="#binary-trees" id="markdown-toc-binary-trees">Binary Trees</a></li>
+  <li><a href="#adjacency-matrices" id="markdown-toc-adjacency-matrices">Adjacency Matrices</a></li>
+  <li><a href="#incidence-matrices" id="markdown-toc-incidence-matrices">Incidence Matrices</a></li>
+</ol>
+
+<h2 id="directed-graph">Directed Graph</h2>
+<p>A <strong>directed graph (digraph)</strong> $G=(V,E)$ consists of a non-empty set $V$ of <strong>vertices</strong> (nodes) and a set $E\subseteq V\times V$ of directed <strong>edes</strong> which are <strong>ordered</strong> pairs of vertices.  <br />
+This allows <strong>self-loops</strong> $(v,v)\in E$ where $v\in V$ but not for <strong>parallel</strong> edges. We can also have <strong>anti-parallel</strong> edges $(u,v)(v,u)\in E$ where $u,v \in V.$</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT3/diG.png" alt="A Directed Graph" class="post-pic" /></center>
+<p>We use notation $u\rightarrow v$ for both the edge $(u,v)$ itself and for the fact that $(u,v)\in E$. $u\rightarrow v$ is an <strong>outgoing</strong> edge <strong>from</strong> $u$ and an <strong>incoming</strong> edge <strong>to</strong> $v$. <br />
+If $u\rightarrow v$ then $v$ is a <strong>successor</strong> of $u$ and $u$ is a predecessor of $v$. Moreover, $u$ and $v$ are <strong>neighbors</strong>, when $u\rightarrow v$ or $v\rightarrow u$, a symmetric relationship. Since we allow self-loops, a vertex can be its own neighbor in which case it is also its own predecessor and its own successor.  <br />
+<strong>Isolated vertices:</strong> vertices with no neighbors.   <br />
+<strong>Edgeless digraph:</strong> just like an edgeless graph.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT3/diG2.png" alt="A Directed Graph" class="post-pic" /></center>
+<h2 id="digraph-terminology">Digraph Terminology</h2>
+<h3 class="no_toc" id="degrees">Degrees</h3>
+<p>The <strong>outdegree</strong> of a vertex $u$ is the number of successors of $u$, same as the number of outgoing edges from $u$, denoted out($u$).  <br />
+Similarly, the <strong>indegree</strong> of a vertex $u$ is the number of predecessors of $u$, same as the number of incoming edges to $u$, denoted in($u$).   <br />
+The <strong>degree</strong> of a node is deg($u$) $=$ out($u$) + in($u$). A node of indegree 0 is called a <strong>source</strong> and a node of outdegree 0 is called a <strong>sink</strong>.   <br />
+<strong>Proposition:</strong> The sum of the outdegrees of all vertices equals the sum of the indegrees of all vertices and further equals the number of edges. Therefore, the sum of the degrees equals twice the number of edges.</p>
+<h3 class="no_toc" id="directed-walk-and-path">Directed Walk and Path</h3>
+<p>A <strong>directed walk</strong> is a non-empty sequence $u_0,u_1,\ldots,u_k$ such that $u_0\rightarrow u_1 \rightarrow \ldots \rightarrow u_k$.     <br />
+We call this a directed walk <strong>from</strong> $u_0$ <strong>to</strong> $u_k$ of length $k$.  <br />
+A <strong>directed path</strong> is a walk with no repeated vertices.  <br />
+For every vertex $v$ there is a directed path of length 0: $v$.  <br />
+Do not confuse the directed walk of length 0, $u$ with the directed walk of length 1 given by the existence of a self-loop: $v\rightarrow v$.  <br />
+Walks of length 0 are paths but walks of length 1 given by self-loops are not paths.</p>
+<h3 class="no_toc" id="directed-cycles">Directed Cycles</h3>
+<p>A <strong>directed cycle</strong> is a closed walk $u_0\rightarrow u_1 \rightarrow \ldots \rightarrow u_k \rightarrow u_0$, with $u_0,u_1,\ldots,u_k$ all distinct. The <strong>length</strong> of the cycle is $k + 1$.  <br />
+There are no cycles of length 0. A self-loop gives a cycle of length 1. A cycle of length 2 consists of two vertices and edges between them in opposite directions (antiparallel edges).   <br />
+Path digraphs, cycle digraphs (including of length 1 and 2) and digraph isomorphism are defined similarly to the undirected case.</p>
+<h2 id="reachability">Reachability</h2>
+<p>A vertex $v$ is <strong>reachable</strong> from a vertex $u$ when there is a walk (and therefore a path) from $u$ to $v$. We write $u\twoheadrightarrow v$ for the <strong>reachability relation</strong>.   <br />
+<strong>Proposition:</strong> The reachability relation is <strong>reflexive</strong>, i.e., $u\twoheadrightarrow u$ and <strong>transitive</strong>, i.e., $u\twoheadrightarrow v$ and $v\twoheadrightarrow w$ imply $u\twoheadrightarrow w$.   <br />
+The relation $u\twoheadrightarrow v$ is called the <strong>reflexive-transitive closure</strong> of the (edge) relation $u\rightarrow v$.</p>
+<h2 id="strong-connectivity">Strong Connectivity</h2>
+<p>Two vertices of a digraph, $u$ and $v$, are strongly connected when $v$ is reachable from $u$ and $u$ is reachable from $v$, i.e., $u\twoheadrightarrow v$ and $v\twoheadrightarrow u$. <br />
+<strong>Proposition:</strong> Strong connectivity is <strong>reflexive</strong>, <strong>symmetric</strong> and <strong>transitive</strong>. <br />
+A set of vertices is strongly connected when any two of its vertices are strongly connected.  <br />
+The <strong>maximally</strong> strongly connected sets of vertices are called <strong>strongly connected components (scc’s)</strong>.   <br />
+<strong>Proposition:</strong> Any two distinct strongly connected components are <strong>disjoint</strong>. <br />
+<strong>Corollary:</strong> The strongly connected components determine a <strong>partition</strong> of the vertices (but not of the edges!).</p>
+<h2 id="directed-acyclic-graph-dags">Directed Acyclic Graph (DAGs)</h2>
+<p>A <strong>directed acyclic graphs (DAG)</strong> is a digraph without directed cycles (not even of length 1).  <br />
+Here is an example DAG of course prerequisites.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT3/daG.png" alt="An Example DAG" class="post-pic" /></center>
+<h3 id="topological-sort">Topological Sort</h3>
+<p>A <strong>topological sort</strong> of a digraph is a sequence $\sigma$ in which every vertex appears exactly once (i.e., a permutation of its vertices) such that for any edge $u\rightarrow v$ in the graph, the vertex $u$ appears in $\sigma$ <strong>before</strong> (but not necessarily <strong>immediately</strong> before) the vertex $v$.   <br />
+<strong>Proposition:</strong> If a digraph has a topological sort then:</p>
+<ul>
+  <li>The first vertex in the sort is a source and the last is a sink.</li>
+  <li>The digraph is a DAG.</li>
+</ul>
+
+<p><strong>Proposition:</strong> Every DAG has at least one source and at least one sink.   <br />
+<strong>Proposition:</strong> Every DAG has at least one topological sort.</p>
+<h4 class="no_toc" id="topological-sort-construction-algorithm">Topological Sort Construction Algorithm</h4>
+<p><strong>Input:</strong> a DAG $G = (V,E)$ with $n$ vertices.     <br />
+<strong>Output:</strong> a permutation $\sigma$ of $V$ that is a topological sort.</p>
+<ol>
+  <li>$G$ has at least one source, $u$. Remove $u$ and call $G_u$ the resulting digraph.    <br />
+ (Removing $u$ cannot create a cycle since we only delete edges. $G_u$ is also a DAG.)</li>
+  <li>Recursively construct a topological sort of $G_u$, i.e., a permutation $\sigma$ of $V \backslash \{u\}$. Then, concatenate $u$ at the beginning.</li>
+  <li>Output $u\sigma$ is a topological sort of G.</li>
+</ol>
+
+<h2 id="binary-trees">Binary Trees</h2>
+<h3 class="no_toc" id="rooted-trees">Rooted Trees</h3>
+<p>A <strong>rooted tree</strong> is a pair $(T,r)$ where $T = (V,E)$ is a tree and the vertex $r \in V$ is designated as a <strong>root</strong>.   <br />
+<strong>Proposition:</strong> Any edge of a rooted tree is traversed in the <strong>same direction</strong> by all unique paths from the root to each of the other vertices.   <br />
+Using this direction, make the rooted tree into a <strong>digraph</strong>, in fact, a DAG with the root as source and tree leaves (or the root, when alone) as sinks.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT3/rootedT.png" alt="An Example Rooted Tree" class="post-pic" /></center>
+<h3 class="no_toc" id="rooted-tree-terminology">Rooted Tree Terminology</h3>
+<p>We call <strong>leaves</strong> the nodes of <strong>degree 1</strong> in rooted trees. However, it is convenient to state that the single node of a one-node rooted tree is also a <strong>leaf</strong>, although it has degree 0.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT3/RTT.png" alt="An Rooted Tree Terminology" class="post-pic" /></center>
+<p><strong>root:</strong> $r$. <br />
+<strong>leaves:</strong> $1,5,8,6$. <br />
+<strong>child</strong> $=$ successor <br />
+<strong>parent</strong> $=$ predecessor   <br />
+<strong>height</strong> $=$ distance from root to farthest leaf height $=$ 4.  <br />
+<strong>binary(rooted) tree:</strong> every node has at most 2 children.</p>
+
+<h3 class="no_toc" id="binary-trees-1">Binary Trees</h3>
+<p><strong>Proposition:</strong> A binary tree of height $h$ has a maximum of $2^{h+1} − 1$ nodes among which are $2^h$ leaves. This maximum is attained for the <strong>complete binary tree</strong> of height $h$.   <br />
+We define a <strong>complete binary tree of height</strong> $h$ to be a rooted tree in which every non-leaf node has two children and all leaves are at distance $h$ from the root.</p>
+
+<h2 id="adjacency-matrices">Adjacency Matrices</h2>
+<p>Two vertices in a graph are <strong>adjacent</strong> if there is one <strong>edge</strong> that is incident to both of them.   <br />
+An <strong>adjacency matrix</strong> for a digraph has one row and one column associated with <strong>each vertex</strong>. If there is an edge from the vertex of the row to the vertex of the column, then the value in that position is <strong>1</strong>. Otherwise, it is <strong>0</strong>.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT3/imE1.png" alt="An Example Adjacency Matrix" class="post-pic" /><img src="https://yj-guo.github.io/assets/img/content/GT3/am1.png" alt="An Example Adjacency Matrix" class="post-pic" /></center>
+<p>We say an adjacency matrix because the order of the vertices is arbitrary!   <br />
+For an <strong>undirected graph</strong>, we can define an adjacency matrix three ways:</p>
+<ol>
+  <li>Only use the part strictly above the diagonal.</li>
+  <li>Only use the part strictly below the diagonal.</li>
+  <li>Copy each value to both locations (symmetric matrix).</li>
+</ol>
+
+<h2 id="incidence-matrices">Incidence Matrices</h2>
+<p>An edge is <strong>incident</strong> to a vertex if that vertex is either the beginning or the end of that edge.   <br />
+An <strong>incidence matrix</strong> for a digraph has one row associated with <strong>each edge</strong> and one column associated with <strong>each vertex</strong>. If an edge runs from vertex $a$ to vertex $b$, the row corresponding to that edge has <strong>-1</strong> in column $a$ and <strong>1</strong> in column $b$; all other entries in that row are <strong>0</strong>.  <br />
+We say an incidence matrix because the order of the edges and the order of the vertices are arbitrary!     <br />
+Unlike adjacency matrices, incidence matrices are often not square! In fact, a square incidence matrix indicates that the graph has at least one cycle.</p>
+<center><img src="https://yj-guo.github.io/assets/img/content/GT3/imE1.png" alt="An Example Incidence Matrix" class="post-pic" /><img src="https://yj-guo.github.io/assets/img/content/GT3/im2.png" alt="An Example Incidence Matrix" class="post-pic" /></center>
+<h3 class="no_toc" id="the-connected-components-basis">The Connected Components Basis</h3>
+<p><strong>Definition:</strong> Let $V$ be a set of vectors. A set of vectors $B$ is called a basis for $V$ if</p>
+<ol>
+  <li>the vectors in $B$ are linearly independent and</li>
+  <li>Span($B$) $=$ $V$.</li>
+</ol>
+
+<p><strong>Proposition:</strong> Let $G$ be a graph and $A$ be its incidence matrix. A basis for the set of vectors $\vec x$ such that $A \vec x = \vec0$ represents a partition of $G$ into its connected components. The full set of vectors is called the <strong>nullspace</strong> of $A$.</p>
+
+<h3 class="no_toc" id="the-cycle-basis">The Cycle Basis</h3>
+<p><strong>Proposition:</strong> Let $G$ be a graph and $A$ be its incidence matrix. A basis for the set of vectors $\vec x$ such that $A \vec {x}^T = \vec0$ represents a reduced set of the undirected cycles in $G$. The full set of vectors is called the <strong>left nullspace</strong> of A.</p>
+
+<p><br />
+<a href="/2020/11/18/Graph2">Previous: Graph Theorem 2 - Trees</a></p>
+
+<hr />
+<h4 class="no_toc" id="footnotes">FOOTNOTES</h4>
+<p>All the contents are based on the course materials provided by <a href="https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index">Dr. Clayton Greenberg</a>.</p>
+
+
+          </article>
+
+          
+
+      </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1 social-links">
+        <h4>CONTACT</h4>
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/email.png"
+            alt="email"
+          />
+          <a href="mailto:gyingjie@seas.upenn.edu" id="email-link">
+            
+              gyingjie[aT]seas.upenn.edu
+            
+          </a>
+          <br />
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/wechat.png"
+            alt="wechat"
+          />
+          <a href="#" id="wechat-link">
+            
+              gorser666
+            
+          </a>
+          <br />
+
+        
+      </div>
+
+      <div class="footer-col footer-col-2 social-links">
+        <h4>FOLLOW</h4>
+
+        
+          <span class="wrap-link">
+
+            
+            <img
+              src="https://yj-guo.github.io/assets/img/icons/github.png"
+              alt="github"
+            />
+            <a href="http://github.com/YJ-Guo">
+              
+                GitHub
+              
+            </a>
+          </span>
+
+           
+
+        
+      </div>
+
+      
+        <div class="footer-col footer-col-3 powered-by">
+          <p>
+            Go to <a href="/note"> Note</a> |
+            Go to <a href="/code"> Code</a> |
+            Go to <a href="/love"> Love</a>
+            <br>
+            powered by <a href="https://jekyllrb.com/">Jekyll</a> | Theme <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
+          </p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+  
+
+  
+    
+    
+
+
+  <div id="wechat-widget">
+    <p>
+      Find me on WeChat with the ID <strong>gorser666</strong>, or scan my QR code:
+    </p>
+
+    <img src="https://yj-guo.github.io/assets/img/wechat-qr-code.jpg" alt="QR code" id="qr-code" />
+  </div>
+
+
+
+
+    <script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/retina-1.3.0.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/cash-4.1.5.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/site.js"></script>
+
+  </body>
+</html>

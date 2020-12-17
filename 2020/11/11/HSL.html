@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <!-- Primary Meta Tags -->
+  <title>Guo's Blog | The Proof of Handshake Lemma's Corollary by Induction</title>
+  <meta name="title" content="Guo's Blog | The Proof of Handshake Lemma's Corollary by Induction"/>
+  <meta name="description" content="The Proof of the number of vertices of odd degree is even by Induction."/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="Guo's Blog | The Proof of Handshake Lemma's Corollary by Induction"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://YJ-Guo.github.io/2020/11/11/HSL"/>
+  <meta property="og:title" content="Guo's Blog | The Proof of Handshake Lemma's Corollary by Induction"/>
+  <meta property="og:description" content="The Proof of the number of vertices of odd degree is even by Induction."/>
+  <meta property="og:image" content="https://YJ-Guo.github.io"/>
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:url" content="https://YJ-Guo.github.io/2020/11/11/HSL"/>
+  <meta property="twitter:title" content="Guo's Blog | The Proof of Handshake Lemma's Corollary by Induction"/>
+  <meta property="twitter:description" content="The Proof of the number of vertices of odd degree is even by Induction."/>
+  <meta property="twitter:image" content="https://YJ-Guo.github.io"/>
+  
+
+  <link rel="stylesheet" href="https://yj-guo.github.io/assets/css/main.css"/>
+  <link rel="canonical" href="https://YJ-Guo.github.io/2020/11/11/HSL"/>
+  <link rel="shortcut icon" href="https://yj-guo.github.io/favicon.ico" type="image/x-icon"/>
+
+  <!-- Google Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', "", "auto");
+    ga('send', "pageview");
+  </script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+ <!-- Mathjax -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$','$']],
+        displayMath: [['$$','$$']]
+        }
+    });
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+</head>
+
+
+  <body>
+    <header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="https://YJ-Guo.github.io/">
+      <img src="https://yj-guo.github.io/assets/img/title.png" alt="Guo's Blog" />
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon"></a>
+
+      <div class="menu">
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/">
+            Home
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/note">
+            Note
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/code">
+            Code
+          </a>
+        
+          
+          
+          <a class="page-link" href="https://yj-guo.github.io/love">
+            Love
+          </a>
+        
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+          <header class="post-header">
+
+            
+
+            <h1 class="post-title">
+            
+              The Proof of Handshake Lemma's Corollary by Induction
+            
+            </h1>
+
+            
+            <p class="post-meta"><span class="post-date">November 11, 2020
+            </span></p>
+          </header>
+
+          <article class="post-content">
+            <center><img src="https://yj-guo.github.io/assets/img/content/GT0/GTintro.jpg" alt="A Graph" class="post-pic" /></center>
+<p>In this page, two commonly used induction methods are applied to prove <strong>the number of vertices of odd degree is even</strong>.</p>
+
+<h2 class="no_toc" id="quick-guide">Quick Guide</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#proof-by-induction-on-edges" id="markdown-toc-proof-by-induction-on-edges">Proof by Induction on Edges</a></li>
+  <li><a href="#proof-by-induction-on-vertices" id="markdown-toc-proof-by-induction-on-vertices">Proof by Induction on Vertices</a></li>
+</ol>
+
+<h2 id="proof-by-induction-on-edges">Proof by Induction on Edges</h2>
+<p>Let $P(m)$ be defined as:   <br />
+For an arbitrary $m\in\mathbb{N}$, in any graph with $m$ edges, the number of vertices of odd degree is even.  <br />
+<br />
+<strong>BASE CASE:</strong> $P(0)$ holds, because a graph with no edge has only isolated vertices, that is, vertices of degree O. Hence, there are an even number (0) of vertices with odd degree. <br />
+<br /> 
+<strong>INDUCTION STEP:</strong> Assume that (IH) $P(k)$ is true, for an arbitrary $k\in\mathbb{N}$.Now, we want to prove $P(k+1)$ is true. <br />
+Let $G$ be a graph with $k+1$ edges. Remove an arbitrary edge $e=\{u, v\}$ from $G$ (note that it could be any edge), so that we now have a graph $G’$ with $k$ edges. By the Induction Hypothesis, the number of vertices with odd degree in $G’$ is even. Denote the number of vertices with odd degree in
+$G’$ to be $2a$, where $a\in\mathbb{N}$. Now put back the edge $e$ that we removed earlier. Observe that doing so increases the degree of vertices $u$ and $v$ by one each. We consider the following three cases: <br />
+<em>Case 1:</em> Both $u$ and $v$ have odd degree in $G’$. Adding e back would make the degree of both $u$ and $v$ even. Hence, the number of vertices with odd degree becomes $2a-2$. <br />
+<em>Case 2:</em> Both $u$ and $v$ have even degree in $G’$.Adding $e$ back would make the degree of both $u$ and $v$ odd. Hence, the number of vertices with odd degree becomes $2a+2$.  <br />
+<em>Case 3:</em> Exactly one of $u$ and $v$ has odd degree in $G$. Without losing generosity, assume $u$ has an odd degree and $v$ has an even degree in $G$. Adding $e$ back would result in $u$ with an even degree and $u$ with an odd degree. Hence, the number of vertices with odd degree would stay unchanged ($2a$).   <br />
+In all cases, the number of odd degree vertices in $G$ is even. Thus, we have shown our claim is true when $m=k+1$, concluding the Induction Step and completing the proof.</p>
+
+<h2 id="proof-by-induction-on-vertices">Proof by Induction on Vertices</h2>
+<p>Let $P(n)$ be defined as:  <br />
+For an arbitrary $n\in\mathbb{Z^+}$, in any graph with $n$ vertices, the number of vertices of odd degree is even.  <br />
+<br /> 
+<strong>BASE CASE:</strong> $P(1)$ holds, because a graph with 1 vertex is an edgeless graph, that is, the graph contains one vertex of degree O. Hence, there are an even number (0) of vertices with odd degree.  <br />
+<br /> 
+<strong>INDUCTION STEP:</strong> Assume that (IH) $P(k)$ is true, for an arbitrary $k\in\mathbb{Z^+}$. Now, we want to prove $P(k+1)$ is true.  <br />
+Let $G=(V, E)$ be a graph with $k+ 1$ vertices. Let $v\in V$ be arbitrary. We partition $V$ into the following sets:</p>
+<ul>
+  <li>$X$ = the neighbors of $u$ with even degree in $G$.</li>
+  <li>$Y$ = the neighbors of $u$ with odd degree in $G$.</li>
+  <li>$R$ = vertices not adjacent to $u$ with even degree in $G$.</li>
+  <li>$S$ = vertices not adjacent to $u$ with odd degree in $G$.</li>
+</ul>
+
+<p>Since $Y$ and $S$ partition the set of odd-degree vertices in $G$, want to show $|Y|$+$|S|$ is even.   <br />
+Remove $v$ with degree $\alpha$ from $G$, so that we now have a graph $G’$ with $k$ vertices.  <br />
+<em>Case 1:</em> $\alpha$ is even. Then $\alpha=2k$, $k\in\mathbb{N}$. This means that $|X|+|Y|=2k$, so $|X|$ and $|Y|$ have the same parity.  <br />
+The degree of each neighbor of $v$ decreased by 1, so all $x\in X$ in $G$ became odd degree vertices in $G’$. By the Induction Hypothesis, the number of vertices with odd degree in $G’$ is even. Denote the number of vertices with odd degree in $G’$ to be $2\alpha$, where $\alpha \in \mathbb{N}$. In $G’$ this gives $|X|+|S|=2a$, since $|X|$ represents the odd-degree vertices
+unaffected by the removal of $v$. Note that $|X|$ and $|S|$ must have the same parity.  <br />
+Now put back the vertex $v$ that we removed earlier. Observe that doing so increases the degree of each of the neighbors of $v$ by 1. All vertices in $X$ now have even degree, and all vertices in $Y$ have odd degree again.
+Since $|X|$ and $|S|$ have the same parity, and we already know $|X|$ and $|Y|$ have the same parity, then$|X|$, $|Y|$, $|S|$ all have the same parity. This means $|Y|+|S|$ is even. <br />
+<em>Case 2:</em> $\alpha$ is odd. (We include $v$ in $S$). Then $\alpha=2k+1$, $k\in\mathbb{N}$. This means that $|X|+|Y|=2k+1$, so $|X|$ and $|Y|$ have opposite parity.    <br />
+The degree of each neighbor of $v$ decreased by 1, so all $x\in X$ in $G$ became odd degree vertices in $G’$. By the Induction Hypothesis, the number of vertices with odd degree in $G’$ is even. Denote the number of vertices with odd degree in $G’$ to be $2\alpha$, where $\alpha\in\mathbb{N}$. In $G’$ this gives$|X|+|S|=2\alpha$, since $|X|$ now represents the new odd vertices in $G$, and $S’=S\backslash\{v\}$ since $v$ had odd degree, removing it means $|S’| =|S|-1$ since all other vertices in $S$ are unaffected. Note that$|X|+|S’|=2\alpha$, or $|X|+|S|=2\alpha+1$. This means $|X|$ and $|S|$ have opposite parity.     <br />
+Now put back the vertex $v$ that we removed earlier. Observe that doing so increases the degree of each of the neighbors of $v$ by 1. All vertices in $X$ now have even degree, and all vertices in $Y$ have odd degree again.  <br />
+Since $|X|$ and $|S|$ must have the opposite party, and $|X|$ and $|Y|$ have opposite parity, we have that $|Y|$ and $|S|$ have the same parity. This means $|Y|+|S|$ is even.    <br />
+In all cases, the number of odd degree vertices in $G$ is even. Thus, we have shown the claim is true when $m=k+1$, concluding the Induction Step and completing the proof.
+<br /></p>
+
+<hr />
+<h4 class="no_toc" id="footnotes">FOOTNOTES</h4>
+<p>All the contents are based on the course materials provided by <a href="https://fling.seas.upenn.edu/~cgreenbe/page.php?id=index">Dr. Clayton Greenberg</a>.</p>
+
+
+          </article>
+
+          
+
+      </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1 social-links">
+        <h4>CONTACT</h4>
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/email.png"
+            alt="email"
+          />
+          <a href="mailto:gyingjie@seas.upenn.edu" id="email-link">
+            
+              gyingjie[aT]seas.upenn.edu
+            
+          </a>
+          <br />
+
+        
+
+          
+          <img
+            src="https://yj-guo.github.io/assets/img/icons/wechat.png"
+            alt="wechat"
+          />
+          <a href="#" id="wechat-link">
+            
+              gorser666
+            
+          </a>
+          <br />
+
+        
+      </div>
+
+      <div class="footer-col footer-col-2 social-links">
+        <h4>FOLLOW</h4>
+
+        
+          <span class="wrap-link">
+
+            
+            <img
+              src="https://yj-guo.github.io/assets/img/icons/github.png"
+              alt="github"
+            />
+            <a href="http://github.com/YJ-Guo">
+              
+                GitHub
+              
+            </a>
+          </span>
+
+           
+
+        
+      </div>
+
+      
+        <div class="footer-col footer-col-3 powered-by">
+          <p>
+            Go to <a href="/note"> Note</a> |
+            Go to <a href="/code"> Code</a> |
+            Go to <a href="/love"> Love</a>
+            <br>
+            powered by <a href="https://jekyllrb.com/">Jekyll</a> | Theme <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
+          </p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+  
+
+  
+    
+    
+
+
+  <div id="wechat-widget">
+    <p>
+      Find me on WeChat with the ID <strong>gorser666</strong>, or scan my QR code:
+    </p>
+
+    <img src="https://yj-guo.github.io/assets/img/wechat-qr-code.jpg" alt="QR code" id="qr-code" />
+  </div>
+
+
+
+
+    <script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/retina-1.3.0.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/vendor/cash-4.1.5.min.js"></script>
+<script type="text/javascript" src="https://yj-guo.github.io/assets/js/site.js"></script>
+
+  </body>
+</html>
